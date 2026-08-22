@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"lukezhg.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.29.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="使用Python已经有几年了，也写过很多文本分析的程序，包括输入输出，写文案，抓网页等。最大的体会是Python的简洁性，你可以用最好的代码做最多的事儿，前提是你知道怎么做。Python可以让你实现人工智能、大数据分析、网页开发，几乎无所不能。所以，如果你想进入码农行业，你要认真的考虑一下是否要学习Python。   本文列举了个人常用的命令，并不系统。后面期望不断改善。     Python重要">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python简明手册">
+<meta property="og:url" content="https://lukezhg.github.io/2013/07/30/python-brief/index.html">
+<meta property="og:site_name" content="Chunlei&#39;s Blog">
+<meta property="og:description" content="使用Python已经有几年了，也写过很多文本分析的程序，包括输入输出，写文案，抓网页等。最大的体会是Python的简洁性，你可以用最好的代码做最多的事儿，前提是你知道怎么做。Python可以让你实现人工智能、大数据分析、网页开发，几乎无所不能。所以，如果你想进入码农行业，你要认真的考虑一下是否要学习Python。   本文列举了个人常用的命令，并不系统。后面期望不断改善。     Python重要">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2013-07-30T06:25:00.000Z">
+<meta property="article:modified_time" content="2020-12-08T01:15:40.000Z">
+<meta property="article:author" content="Chunlei">
+<meta property="article:tag" content="Python">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://lukezhg.github.io/2013/07/30/python-brief/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://lukezhg.github.io/2013/07/30/python-brief/","path":"2013/07/30/python-brief/","title":"Python简明手册"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Python简明手册 | Chunlei's Blog</title>
+  
+
+
+
+
+
+
+
+
+  
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Chunlei's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">刹那是永恒</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-english"><a href="/tags/en/" rel="section"><i class="fa fa-globe fa-fw"></i>English</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Chunlei</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">531</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">97</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">374</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://lukezhg.github.io/2013/07/30/python-brief/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Chunlei">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chunlei's Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Python简明手册 | Chunlei's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Python简明手册
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2013-07-30 14:25:00" itemprop="dateCreated datePublished" datetime="2013-07-30T14:25:00+08:00">2013-07-30</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2020-12-08 09:15:40" itemprop="dateModified" datetime="2020-12-08T09:15:40+08:00">2020-12-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF%E6%8A%80%E5%B7%A7/" itemprop="url" rel="index"><span itemprop="name">技术技巧</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>使用Python已经有几年了，也写过很多文本分析的程序，包括输入输出，写文案，抓网页等。最大的体会是Python的简洁性，你可以用最好的代码做最多的事儿，前提是你知道怎么做。Python可以让你实现人工智能、大数据分析、网页开发，几乎无所不能。所以，如果你想进入码农行业，你要认真的考虑一下是否要学习Python。  </p>
+<p>本文列举了个人常用的命令，并不系统。后面期望不断改善。    </p>
+<p>Python重要用法示例</p>
+<pre><code>dir(list)#显示关键字相关的函数
+help(list.reverse)#查询某个函数的功能
+</code></pre>
+<p>set 让一个list变成无重复元素的set<br>例如：</p>
+<pre><code>shapes = [&#39;circle&#39;,&#39;square&#39;,&#39;triangle&#39;,&#39;circle&#39;]
+setOfShapes = set(shapes)
+setOfShapes 
+set([&#39;circle&#39;,&#39;square&#39;,&#39;triangle&#39;]) 
+ setOfShapes.add(&#39;polygon&#39;) 
+&#39;rhombus&#39; in setOfShapes 
+False 
+setOfShapes - setOfFavoriteShapes 
+setOfShapes &amp; setOfFavoriteShapes 
+setOfShapes | setOfFavoriteShapes 
+</code></pre>
+<p>map和lambda</p>
+<pre><code>map(lambda x: x * x, [1,2,3])
+[1, 4, 9]
+filter(lambda x: x &gt; 3, [1,2,3,4,5,4,3,2,1])
+[4, 5, 4]
+</code></pre>
+<p>Object 先定义一个类，然后给类生成实例<br>定义如：</p>
+<pre><code>class FruitShop:
+def __init__(self, name, fruitPrices):
+    &quot;&quot;&quot;
+        name: Name of the fruit shop
+        
+        fruitPrices: Dictionary with keys as fruit 
+        strings and prices for values e.g. 
+        {&#39;apples&#39;:2.00, &#39;oranges&#39;: 1.50, &#39;pears&#39;: 1.75} 
+    &quot;&quot;&quot;
+    self.fruitPrices = fruitPrices
+    self.name = name
+    print &#39;Welcome to the %s fruit shop&#39; % (name)
+    
+def getCostPerPound(self, fruit):
+    &quot;&quot;&quot;
+        fruit: Fruit string
+    Returns cost of &#39;fruit&#39;, assuming &#39;fruit&#39;
+    is in our inventory or None otherwise
+    &quot;&quot;&quot;
+    if fruit not in self.fruitPrices:
+        print &quot;Sorry we don&#39;t have %s&quot; % (fruit)
+        return None
+    return self.fruitPrices[fruit]
+    
+def getPriceOfOrder(self, orderList):
+    &quot;&quot;&quot;
+        orderList: List of (fruit, numPounds) tuples
+        
+    Returns cost of orderList. If any of the fruit are  
+    &quot;&quot;&quot; 
+    totalCost = 0.0             
+    for fruit, numPounds in orderList:
+        costPerPound = self.getCostPerPound(fruit)
+        if costPerPound != None:
+            totalCost += numPounds * costPerPound
+    return totalCost
+def getName(self):
+    return self.name
+</code></pre>
+<p>调用winsound 函数  </p>
+<pre><code>
+import winsound
+# press a make a beep
+if event.KeyID==65: winsound.Beep(200,9)
+# press ESC play exit sound
+if event.KeyID==27: winsound.PlaySound("SystemExit", winsound.SND_ALIAS)
+</code></pre>
+
+
+<p>使用pyHook监听鼠标和键盘事件  </p>
+<pre><code>
+import pythoncom
+import pyHook
+
+def onKeyboardEvent(event):
+	global switch
+	# 监听键盘事件
+	if switch:
+		print "Key:", event.Key
+		print "KeyID:", event.KeyID
+	return True #监听函数的返回值
+
+def main():
+	# 定义一个实例
+	hm = pyHook.HookManager()
+	# 监听所有键盘事件
+	hm.KeyDown = onKeyboardEvent
+	# 设置键盘监听器
+	hm.HookKeyboard()
+	# 循环并保持一直处于监听状态
+	pythoncom.PumpMessages()
+</code></pre>
+
+<p>用pyenv的基本操作命令管理python版本</p>
+<pre><code>pyenv versions# 查看当前已安装的 python 版本
+pyenv install ... #安装指定版本的 python
+pyenv global python版本 #切换全局 python 版本
+source ~/.bash_profile
+pyenv local python版本 #切换当前文件夹下的 python 版本
+pyenv shell python版本 #切换当前 shell 中的 python 版本
+pyenv version #查看当前使用的 python 版本
+</code></pre>
+<p>python 数据库开发</p>
+<p>取消所有8000进程：<br>    sudo lsof -t -i tcp:8000 | xargkill -9</p>
+<p>创建项目<br>    django-admin startproject demoproject</p>
+<p>创建应用<br>    cd demoproject<br>    python manage.py startapp TestModel</p>
+<p>打开 mysql服务器<br>    mysql -u root -p</p>
+<p>参考：<a target="_blank" rel="noopener" href="http://djangobook.py3k.cn/chapter05/">手册</a></p>
+<p>现在我们可以创建数据库表了。首先，用下面的命令对校验模型的有效性：</p>
+<pre><code>python manage.py validate
+</code></pre>
+<p>模型确认没问题了，运行下面的命令来生成 CREATE TABLE 语句：</p>
+<pre><code>python manage.py sqlall books
+python manage.py syncdb
+</code></pre>
+<p>打开服务器<br>    python manage.py runserver<br>    python manage.py migrate<br>    python manage.py makemigrations</p>
+<p>查看sql服务是否启动</p>
+<pre><code>ps -ef | grep mysqld#查看MySQL服务器是否启动
+service mysqld status#查看服务运行的状态
+</code></pre>
+<p>Mysql<br>mysql -u db_user -p<br>SHOW DATABASES;<br>CREATE DATABASE blog_data;<br>drop database mydb;<br>SHOW DATABASES;<br>Whenever you’d like to exit MySQL server, press CTRL + D.</p>
+<p>show variables like ‘%char%’;<br>set character_set_server&#x3D;utf8;<br>set character_set_database&#x3D;utf8;</p>
+<p>show variables like ‘%char%’;</p>
+<p>ALTER DATABASE classlinkr DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci</p>
+<p>use my_db;<br>show tables;</p>
+<p>show full columns from clips_clip;  </p>
+<p>ALTER TABLE classlinkr.clips_clip MODIFY COLUMN concept VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL;</p>
+<p>闲来无事，随便看看Python 3.0的文档，发现了一个很pythonic的模块：声音播放 for windows；凑个流行语叫做“很傻很天真”，不过挺好使得。</p>
+<p>1 winsound.Beep</p>
+<p>每一个都有不同的用法，一个一个来看吧。</p>
+<pre><code>winsound.Beep(frequency, duration)
+</code></pre>
+<p>PC扬声器滴的一声，就是它了。第一个参数frequency表示分贝数，大小在37到32767之间。第二个参数是持续时间，以毫秒为单位(有耐心的话可以试试winsound.Beep(32767,9999999)，嘿嘿)。</p>
+<p>2 winsound.PlaySound</p>
+<pre><code>1. import winsound
+2. # Play Windows exit sound.
+3. winsound.PlaySound(&quot;SystemExit&quot;, winsound.SND_ALIAS)
+4. # Probably play Windows default sound, if any is registered (because
+5. # &quot;*&quot; probably isn&#39;t the registered name of any sound).
+6. winsound.PlaySound(&quot;*&quot;, winsound.SND_ALIAS)
+不过只能播放wav,不能播放wma和mp3文件，这2种还需要其他包的支持。
+</code></pre>
+<p>网站维护：<br>使用Django框架<br>前端口用h5和JS开发<br>替换该文件之后，需要跑一下systemctl restart httpd命令才能生效</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Python/" rel="tag"># Python</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2013/07/30/3-rules-when-studying-at-uga/" rel="prev" title="3 rules to follow when studying at UGA">
+                  <i class="fa fa-angle-left"></i> 3 rules to follow when studying at UGA
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2013/08/02/dream-back-to-home/" rel="next" title="Dream back to Home">
+                  Dream back to Home <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Chunlei</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>

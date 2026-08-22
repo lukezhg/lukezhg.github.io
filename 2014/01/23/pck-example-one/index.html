@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"lukezhg.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.29.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="统计学中有很多概念很抽象不容易理解，但是如果有恰当的例子作桥梁，就可以深入浅出，容易让人领悟了。   最近尝试学习一些关于项目反映理论（IRT）的东西，觉得很多学习资料都使用公式吓唬人，并没有把这个概念浅显化和生活化。总之，这些资料不够友好，让初学者望而生畏。   那么什么是项目反映理论呢？我试着解释解释。这样从测量开始说起。举个例子，推铅球比赛。每个运动员都会按照规定选择一定大小的铅球站在指定的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="项目反应理论是个啥">
+<meta property="og:url" content="https://lukezhg.github.io/2014/01/23/pck-example-one/index.html">
+<meta property="og:site_name" content="Chunlei&#39;s Blog">
+<meta property="og:description" content="统计学中有很多概念很抽象不容易理解，但是如果有恰当的例子作桥梁，就可以深入浅出，容易让人领悟了。   最近尝试学习一些关于项目反映理论（IRT）的东西，觉得很多学习资料都使用公式吓唬人，并没有把这个概念浅显化和生活化。总之，这些资料不够友好，让初学者望而生畏。   那么什么是项目反映理论呢？我试着解释解释。这样从测量开始说起。举个例子，推铅球比赛。每个运动员都会按照规定选择一定大小的铅球站在指定的">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://raw.github.com/lukezhg/Freyja/master/Itermcharasticcurve.jpg">
+<meta property="article:published_time" content="2014-01-23T08:20:00.000Z">
+<meta property="article:modified_time" content="2020-12-08T01:15:40.000Z">
+<meta property="article:author" content="Chunlei">
+<meta property="article:tag" content="IRT">
+<meta property="article:tag" content="PCK">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.github.com/lukezhg/Freyja/master/Itermcharasticcurve.jpg">
+
+
+<link rel="canonical" href="https://lukezhg.github.io/2014/01/23/pck-example-one/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://lukezhg.github.io/2014/01/23/pck-example-one/","path":"2014/01/23/pck-example-one/","title":"项目反应理论是个啥"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>项目反应理论是个啥 | Chunlei's Blog</title>
+  
+
+
+
+
+
+
+
+
+  
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Chunlei's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">刹那是永恒</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-english"><a href="/tags/en/" rel="section"><i class="fa fa-globe fa-fw"></i>English</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Chunlei</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">531</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">97</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">374</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://lukezhg.github.io/2014/01/23/pck-example-one/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Chunlei">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chunlei's Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="项目反应理论是个啥 | Chunlei's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          项目反应理论是个啥
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2014-01-23 16:20:00" itemprop="dateCreated datePublished" datetime="2014-01-23T16:20:00+08:00">2014-01-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2020-12-08 09:15:40" itemprop="dateModified" datetime="2020-12-08T09:15:40+08:00">2020-12-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/IRT/" itemprop="url" rel="index"><span itemprop="name">IRT</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>统计学中有很多概念很抽象不容易理解，但是如果有恰当的例子作桥梁，就可以深入浅出，容易让人领悟了。  </p>
+<p>最近尝试学习一些关于项目反映理论（IRT）的东西，觉得很多学习资料都使用公式吓唬人，并没有把这个概念浅显化和生活化。总之，这些资料不够友好，让初学者望而生畏。  </p>
+<p>那么什么是项目反映理论呢？我试着解释解释。这样从测量开始说起。举个例子，推铅球比赛。每个运动员都会按照规定选择一定大小的铅球站在指定的地点，用尽全力把球向着一个方向推出去。然后裁判会用尺子测量落地点与原点的距离，读出读数作为成绩。实际上测量的是选手的推力和推送技巧，它有一个理论的真值。而裁判的读数则是观测值。但是理论值并不等于观测值。理论值&#x3D;观测值+误差。这就是经典的测量理论。但是铅球有不同重量和大小，假如在比赛记录中，有两个不同时期的运动员，一个用的是15斤，一个是10斤，前者推了15米，后者推出了20米，那么那个选手的成绩更好呢。这个时候经典测验理论就无能为力了，要解决这个问题必须要再把两个运动员找来，用同一个铅球重新比过。但是项目反映理论则可以解决这个问题。  </p>
+<p>实际上，教育测量往往比这个情境还要复杂。推铅球我们还能直接测量然后读数，即使有误差，多测几次就能减少误差。当是教育测量则通常是纸笔测验，这个题答对那个题每答对，最后有个总分。那么这个总分就是我们学生的学业能力吗？当然不是，比如这张试卷一共十个题目。有些简单题目很多人答对，有些难题则很少人答对。假如有两个学生都得了8分。一个学生把难题都做对了，但是简单题却错了两个。另外一个则是两个最难的题目都做错了。那么他们的学业能力真的一样吗？你觉得谁的学业能力应该更强一些？（想一想）  </p>
+<p>如何思考这个问题呢？我们还是用推铅球这个例子。由于某种原因，我们无法直接测量了，比如没有尺子并且是夜晚。那怎么比赛呢，于是我们选几个离河边远近不同的几个测试点，然后在每个点放一堆大小相同的铅球。虽然我们不能测量，但是我们仍然能区分铅球是否落水，听到落水声就得1分，否则0分。就好像做选择题，我们能判断是否选择了正确的选项。由于每个测试点离河边远近的距离都不同，铅球的大小也不同，而且河岸的形状也有变化，所以每个测试点的难度也不同。但是同一个选手在状态相同的情况下，测试结果理论上是相同的。我们将会根据每个测试点选手的表现来估计其能力水平。如果按照总分把所有选手分成高分组和低分组，对于同一个测试点，我们会发现高分组的通过率会高于低分组，如果从群体中随机选取一个选手的话，来自高分组的选手将会有更高的概率通过，而低分组的选手则通过率会比较低。如果我们以选手的能力为横坐标，以通过某个测试点的概率为纵轴，那么就得到下面的曲线。<br><img src="https://raw.github.com/lukezhg/Freyja/master/Itermcharasticcurve.jpg" alt="IRT ICC 项目特征曲线">  </p>
+<p>从这个项目特征曲线中我们可以看到，随着能力（theta）的提高，答对这个题目的概率也在提升。不同题目的曲线也不同，也许你已经想象出一道更简单题的题目的项目特征曲线将会相对这条曲线左移，而难题的曲线则右移。假如通过大量的测验知道了每个题目的项目特征曲线，那么我们就可以根据选手对一组题目的作答情况来估测其能力水平。即便是两个选手作答的两组试题并不相同，我们也能够比较两个选手的能力高低了。  </p>
+<p>当然项目特征曲线有简单的也有复杂的，简单1个参数（难度），也有2个（难度，区分度）或3个参数（难度，区分度和猜测参数）的，也就是所谓1P模型，2P，3P模型。  </p>
+<p>了解更多关于IRT的知识，请参考学习资料见：<a target="_blank" rel="noopener" href="http://zhangchunlei.com/blog/2014/01/22/irt-learning-resources/">IRT learning resources - Chunlei’s Blog</a>  </p>
+<p>为了更好解释项目反映理论，我曾经想过很多其他的例子，但是还是觉得推铅球这个例子最好，最能深入浅出，又不失去科学性。但是好的例子往往不是一下子就想到的，而且往往需要比较后才能选择出来，我以前想到的例子也列出来，读者可以自己比较比较。  </p>
+<p>A 抛硬币或者骰子<br>B 测量身高<br>C 摸高<br>D 跳高</p>
+<p>比较的依据：<br>1 是否用来衡量某种能力<br>2 是否可测量，与经典测量理论相联系<br>3 群体的这种能力的分布是否为正态分布<br>4 是否能解决不同尺子测量结果比较的问题  </p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/IRT/" rel="tag"># IRT</a>
+              <a href="/tags/PCK/" rel="tag"># PCK</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2014/01/22/irt-learning-resources/" rel="prev" title="IRT learning resources">
+                  <i class="fa fa-angle-left"></i> IRT learning resources
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2014/01/25/science-bowl/" rel="next" title="Science Bowl">
+                  Science Bowl <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Chunlei</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>

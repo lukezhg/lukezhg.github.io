@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"lukezhg.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.29.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="本来想尝试使用其他的文本编辑器，以后再说吧。我就用这个editplus干活了，先把使用github以及octopress搭建博客的整个过程梳理下来。 搭建的步骤如下：1.首先是准备工作，下载和安装必要的软件。2.然后是克隆octopress并安装3.接下来是将octopress配置好并发布博文。具体步骤可以重点参考这篇文章。 具体步骤纪要： 准备工作，下载gitinstaller, ruby197">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用Octopress发布Github page博客">
+<meta property="og:url" content="https://lukezhg.github.io/2012/12/27/github-blog-with-octopress/index.html">
+<meta property="og:site_name" content="Chunlei&#39;s Blog">
+<meta property="og:description" content="本来想尝试使用其他的文本编辑器，以后再说吧。我就用这个editplus干活了，先把使用github以及octopress搭建博客的整个过程梳理下来。 搭建的步骤如下：1.首先是准备工作，下载和安装必要的软件。2.然后是克隆octopress并安装3.接下来是将octopress配置好并发布博文。具体步骤可以重点参考这篇文章。 具体步骤纪要： 准备工作，下载gitinstaller, ruby197">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2012-12-27T13:05:00.000Z">
+<meta property="article:modified_time" content="2020-12-08T01:15:40.000Z">
+<meta property="article:author" content="Chunlei">
+<meta property="article:tag" content="github">
+<meta property="article:tag" content="octopress">
+<meta property="article:tag" content="标签云">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://lukezhg.github.io/2012/12/27/github-blog-with-octopress/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://lukezhg.github.io/2012/12/27/github-blog-with-octopress/","path":"2012/12/27/github-blog-with-octopress/","title":"使用Octopress发布Github page博客"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>使用Octopress发布Github page博客 | Chunlei's Blog</title>
+  
+
+
+
+
+
+
+
+
+  
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Chunlei's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">刹那是永恒</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-english"><a href="/tags/en/" rel="section"><i class="fa fa-globe fa-fw"></i>English</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B7%E4%BD%93%E6%AD%A5%E9%AA%A4%E7%BA%AA%E8%A6%81%EF%BC%9A"><span class="nav-number">1.</span> <span class="nav-text">具体步骤纪要：</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Chunlei</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">531</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">97</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">374</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://lukezhg.github.io/2012/12/27/github-blog-with-octopress/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Chunlei">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chunlei's Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="使用Octopress发布Github page博客 | Chunlei's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          使用Octopress发布Github page博客
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2012-12-27 21:05:00" itemprop="dateCreated datePublished" datetime="2012-12-27T21:05:00+08:00">2012-12-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2020-12-08 09:15:40" itemprop="dateModified" datetime="2020-12-08T09:15:40+08:00">2020-12-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/github/" itemprop="url" rel="index"><span itemprop="name">github</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/github/%E6%8A%80%E6%9C%AF%E6%8A%80%E5%B7%A7/" itemprop="url" rel="index"><span itemprop="name">技术技巧</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>本来想尝试使用其他的文本编辑器，以后再说吧。我就用这个editplus干活了，先把使用github以及octopress搭建博客的整个过程梳理下来。</p>
+<p>搭建的步骤如下：<br>1.首先是准备工作，下载和安装必要的软件。<br>2.然后是克隆octopress并安装<br>3.接下来是将octopress配置好并发布博文。<br>具体步骤可以重点参考<a target="_blank" rel="noopener" href="http://www.cnblogs.com/rubylouvre/archive/2012/06/10/2543706.html">这篇</a>文章。</p>
+<h2 id="具体步骤纪要："><a href="#具体步骤纪要：" class="headerlink" title="具体步骤纪要："></a>具体步骤纪要：</h2><ol>
+<li>准备工作，下载<a target="_blank" rel="noopener" href="http://windows.github.com/">gitinstaller</a>, <a target="_blank" rel="noopener" href="http://rubyforge.org/frs/?group_id=167">ruby197</a>, <a target="_blank" rel="noopener" href="https://github.com/downloads/oneclick/rubyinstaller/DevKit-tdm-32-4.5.2-20111229-1559-sfx.exe">devkit</a>, 然后安装。<br>gitinstalller和ruby197只要一路next过去就可以安装好，ruby我选择的都是c盘根目录。devkit解压到c盘根目录。安装如下：  <blockquote>
+<pre><code>$ cd C:\DevKit  
+</code></pre>
+</blockquote>
+   $ ruby dk.rb init<br>   $ ruby dk.rb instal</li>
+</ol>
+<p>布置环境：</p>
+<blockquote>
+<pre><code>$ gem sources --remove http://rubygems.org/  
+</code></pre>
+</blockquote>
+<pre><code>  $ gem sources -a http://ruby.taobao.org/  
+  $ gem install rdoc bundler   
+  $ vi Gemfile  #将行 ：source &quot;http://rubygems.org/&quot; 改为:source &quot;http://ruby.taobao.org/&quot;
+  $ bundle install  #如果出错，改执行：bundle update; rake install   
+</code></pre>
+<ol start="2">
+<li>克隆远程octopress到本地文件夹，本地文件夹名称无所谓，比如我的就放在G:&#x2F;github&#x2F;myblog<br>接下来进入git shell, 在命令行中执行一系列的命令来安装octopress，命令代码如下：  <blockquote>
+<pre><code>$ git clone git://github.com/imathis/octopress.git myblog  
+</code></pre>
+</blockquote>
+   $ cd myblog<br>   $ rake setup_github_pages<br>按照提示输入：<a href="mailto:&#x67;&#x69;&#x74;&#x40;&#x67;&#x69;&#116;&#x68;&#117;&#x62;&#x2e;&#x63;&#111;&#109;">git@github.com</a>:username&#x2F;username.github.com.git, 比如我的github用户名为lukezhg，那么我就需要输入 <a href="mailto:&#103;&#x69;&#x74;&#64;&#x67;&#x69;&#x74;&#104;&#117;&#98;&#x2e;&#99;&#x6f;&#109;">git@github.com</a>:lukezhg&#x2F;lukezhg.github.com.git   <blockquote>
+<pre><code>$ rake generate   #生成本地文件
+</code></pre>
+</blockquote>
+   $ rake preview  #实现本地预览 访问  <a target="_blank" rel="noopener" href="http://localhost:4000/">http://localhost:4000</a> 查看效果  （可选）<br>   $ rake deploy  #发布本地文件到服务器</li>
+</ol>
+<p>保存博客源码到github source分支:</p>
+<blockquote>
+<pre><code>$ git add .  
+</code></pre>
+</blockquote>
+<pre><code>  $ git commit -m &#39;blog source&#39;  
+  $ git push origin source
+</code></pre>
+<ol start="3">
+<li>初步配置octopress<br>_config.yml文件：</li>
+</ol>
+<p>添加cname文件<br>只需要在myblog\source目录下添加一个cname的文件，并在第一行写上你的域名，保存即可。</p>
+<p>发布新博文（post）或者新页面（page）   </p>
+<blockquote>
+<pre><code>$ rake new_post[&quot;article name&quot;]   
+</code></pre>
+</blockquote>
+<pre><code>  $ rake new_page[&quot;page name&quot;]
+</code></pre>
+<ol start="4">
+<li>继续完善<br>添加侧边栏内容</li>
+</ol>
+<p>（1）添加导航<br>修改myblog\source_includes\custom目录下的navigation.html文件即可  </p>
+<p>（2）添加分类<br><a target="_blank" rel="noopener" href="https://github.com/alswl/octopress-category-list">alswl&#x2F;octopress-category-list</a>  </p>
+<p>（3）自定义网站图标<br>替换myblog\source目录下的favicon.png可以实现自定义网站图标  </p>
+<ol start="5">
+<li>额外的说明<br>（1）执行rake install如若出错：  <blockquote>
+<pre><code>$ rake install
+</code></pre>
+</blockquote>
+   $ rake aborted!<br>   $ You have already activated rake 0.9.2.2, but your Gemfile requires rake 0.9.2. Using bundle exec may solve this.<br>   $ (See full trace by running task with –trace)</li>
+</ol>
+<p>&#x3D;&#x3D;》修正办法为：</p>
+<blockquote>
+<pre><code>$ bundle update; rake install  
+</code></pre>
+</blockquote>
+<p>（2）添加CNAME文件后不生效&#x3D;&#x3D;》手动在github网页上文件代码剪贴掉，保存，然后再粘贴回来，保存。</p>
+<p>（3）atom.xml不生效&#x3D;&#x3D;》使用同样的方法先把文件代码剪贴，保存，然后再粘贴回来。</p>
+<p>（去除了Markdown语法，已经添加到octopress tips页面去了）</p>
+<p>主要参考：<br><a id="1"></a><a target="_blank" rel="noopener" href="http://blog.log4d.com/2012/05/tag-cloud/">给 Octopress 加上标签功能</a><br><a target="_blank" rel="noopener" href="http://www.cnblogs.com/rubylouvre/archive/2012/06/10/2543706.html">利用GitHub Pages安装部署Octopress博客</a><br><a target="_blank" rel="noopener" href="http://www.cnblogs.com/rubylouvre/archive/2012/06/10/2543744.html">在github上用octopress搭建博客过程纪要</a>  </p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/github/" rel="tag"># github</a>
+              <a href="/tags/%E6%A0%87%E7%AD%BE%E4%BA%91/" rel="tag"># 标签云</a>
+              <a href="/tags/octopress/" rel="tag"># octopress</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2012/11/29/how-to-assist-learners-survive-in-complicated-learning-environment/" rel="prev" title="如何辅助学习者在复杂网络学习环境中生存下来">
+                  <i class="fa fa-angle-left"></i> 如何辅助学习者在复杂网络学习环境中生存下来
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2013/01/05/bus-story/" rel="next" title="公交车上的寒与暖">
+                  公交车上的寒与暖 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Chunlei</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>

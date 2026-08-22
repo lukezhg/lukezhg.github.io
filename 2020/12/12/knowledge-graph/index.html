@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"lukezhg.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.29.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="什么是知识图谱？概念图（concept map）是用图形的方式表征知识，是知识可视化的一种形式，它的根本目的是辅助人类的知识加工，说白了是给人看的，促进知识理解。 知识图谱(knowledge graph)也可以表征为知识网络，但是它主要不是给人看，而是想让机器读懂知识。其背后的前提假设是知识可以通过知识图谱的方式表征出来，其背后隐藏的是符合主义，也就是知识的本质是符合表征。 知识图谱按照应用情境">
+<meta property="og:type" content="article">
+<meta property="og:title" content="什么是知识图谱">
+<meta property="og:url" content="https://lukezhg.github.io/2020/12/12/knowledge-graph/index.html">
+<meta property="og:site_name" content="Chunlei&#39;s Blog">
+<meta property="og:description" content="什么是知识图谱？概念图（concept map）是用图形的方式表征知识，是知识可视化的一种形式，它的根本目的是辅助人类的知识加工，说白了是给人看的，促进知识理解。 知识图谱(knowledge graph)也可以表征为知识网络，但是它主要不是给人看，而是想让机器读懂知识。其背后的前提假设是知识可以通过知识图谱的方式表征出来，其背后隐藏的是符合主义，也就是知识的本质是符合表征。 知识图谱按照应用情境">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-12-12T07:25:00.000Z">
+<meta property="article:modified_time" content="2026-08-17T08:29:40.000Z">
+<meta property="article:author" content="Chunlei">
+<meta property="article:tag" content="DKG">
+<meta property="article:tag" content="GKG">
+<meta property="article:tag" content="knowledge graph">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://lukezhg.github.io/2020/12/12/knowledge-graph/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://lukezhg.github.io/2020/12/12/knowledge-graph/","path":"2020/12/12/knowledge-graph/","title":"什么是知识图谱"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>什么是知识图谱 | Chunlei's Blog</title>
+  
+
+
+
+
+
+
+
+
+  
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Chunlei's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">刹那是永恒</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-english"><a href="/tags/en/" rel="section"><i class="fa fa-globe fa-fw"></i>English</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%EF%BC%9F"><span class="nav-number">1.</span> <span class="nav-text">什么是知识图谱？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E7%9A%84%E6%9E%84%E6%88%90"><span class="nav-number">2.</span> <span class="nav-text">知识图谱的构成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E5%85%83%E7%BB%84%E7%9A%84%E4%B8%8D%E5%90%8C%E5%BD%A2%E5%BC%8F"><span class="nav-number">3.</span> <span class="nav-text">三元组的不同形式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-number">4.</span> <span class="nav-text">知识图谱的基本概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E4%B8%AD%E7%9A%84%E5%85%B3%E7%B3%BB%E7%B1%BB%E5%9E%8B"><span class="nav-number">5.</span> <span class="nav-text">知识图谱中的关系类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E7%9A%84%E5%BA%94%E7%94%A8"><span class="nav-number">6.</span> <span class="nav-text">知识图谱的应用</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Chunlei</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">531</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">97</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">374</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://lukezhg.github.io/2020/12/12/knowledge-graph/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Chunlei">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chunlei's Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="什么是知识图谱 | Chunlei's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          什么是知识图谱
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2020-12-12 15:25:00" itemprop="dateCreated datePublished" datetime="2020-12-12T15:25:00+08:00">2020-12-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2026-08-17 16:29:40" itemprop="dateModified" datetime="2026-08-17T16:29:40+08:00">2026-08-17</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h3 id="什么是知识图谱？"><a href="#什么是知识图谱？" class="headerlink" title="什么是知识图谱？"></a><a href="#%E4%BB%80%E4%B9%88%E6%98%AF%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%EF%BC%9F" title="什么是知识图谱？"></a>什么是知识图谱？</h3><p>概念图（concept map）是用图形的方式表征知识，是知识可视化的一种形式，它的根本目的是辅助人类的知识加工，说白了是给人看的，促进知识理解。</p>
+<p>知识图谱(knowledge graph)也可以表征为知识网络，但是它主要不是给人看，而是想让机器读懂知识。其背后的前提假设是知识可以通过知识图谱的方式表征出来，其背后隐藏的是符合主义，也就是知识的本质是符合表征。</p>
+<p>知识图谱按照应用情境和范围的不同，可以分为通用指示图图谱GKG和领域知识图谱DKG，分别适应于一般性人机交流和特定领域的人机交流。</p>
+<h3 id="知识图谱的构成"><a href="#知识图谱的构成" class="headerlink" title="知识图谱的构成"></a><a href="#%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E7%9A%84%E6%9E%84%E6%88%90" title="知识图谱的构成"></a>知识图谱的构成</h3><p>构成知识图谱的基本单位是三元组。三元组由实体-连接-实体构成，记录了网络中实体与实体的关系，它是本质上就是一条知识连接，一个陈述句，一个命题。命题是可以判断真假的陈述句。命题也是构成知识系统的<br>基本单位。因此，理论上所以知识都可以表征为命题，继而表征为知识图谱中的三元组。<br>举一个生物学的例子，比如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">真核细胞-是-细胞</span><br><span class="line">真核细胞-有-细胞核</span><br></pre></td></tr></table></figure>
+
+<p>用这2个三元组就描述了关于真核细胞的2个命题。</p>
+<h3 id="三元组的不同形式"><a href="#三元组的不同形式" class="headerlink" title="三元组的不同形式"></a><a href="#%E4%B8%89%E5%85%83%E7%BB%84%E7%9A%84%E4%B8%8D%E5%90%8C%E5%BD%A2%E5%BC%8F" title="三元组的不同形式"></a>三元组的不同形式</h3><p>理论上，我们可以将任何一个命题表述为三元组，这就需要三元组具有不同的形式，以适应不同的句子。比如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">实体-状态-1：我笑了</span><br><span class="line">实体-关系-实体：我吃饭</span><br><span class="line">实体-关系-实体（状态）：我找到了一家高档的餐馆</span><br><span class="line">三元组-关系-实体：我与朋友的关系不是很和睦</span><br><span class="line">实体-关系-三元组：他不同意我与玛丽结婚</span><br><span class="line">三元组-关系-三元组：他对待玛丽就像父亲对待女儿</span><br><span class="line">三元组-三元组-三元组：我肚子饿了和我要去餐馆是事件的前因后果</span><br></pre></td></tr></table></figure>
+
+<h3 id="知识图谱的基本概念"><a href="#知识图谱的基本概念" class="headerlink" title="知识图谱的基本概念"></a><a href="#%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5" title="知识图谱的基本概念"></a>知识图谱的基本概念</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">实体（Entity）是对客观个体的抽象，知识图谱中的实体多是具体的。例如：李安，姚明。</span><br><span class="line">类型（type）是对具有相同特点或属性的实体集合的抽象。例如：国家，运动员。</span><br><span class="line">关系（relation）是实体与实体之间关系的抽象。例如：导演，父女。</span><br><span class="line">属性（property）是对实体与实体之间关系的抽象。例如：导演，身高。</span><br><span class="line">域（domain）是类型的集合，凌驾于类型之上，是对某一领域所有类型的抽象。例如：地理位置，职业。</span><br><span class="line">值（value）是用来描述实体的，可以分为文本型和数值型。例如：性别：男，身高：226cm。</span><br></pre></td></tr></table></figure>
+
+<h3 id="知识图谱中的关系类型"><a href="#知识图谱中的关系类型" class="headerlink" title="知识图谱中的关系类型"></a><a href="#%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E4%B8%AD%E7%9A%84%E5%85%B3%E7%B3%BB%E7%B1%BB%E5%9E%8B" title="知识图谱中的关系类型"></a>知识图谱中的关系类型</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">隶属：（is-a）</span><br><span class="line">同义：（similar)</span><br><span class="line">从属：（part-of）</span><br><span class="line">相关：（relate-to）</span><br><span class="line">因果：（cause）：forward(促进)、restraint(抑制)</span><br><span class="line">从事：（do）：发现（discover）、发明（invent）</span><br></pre></td></tr></table></figure>
+
+<h3 id="知识图谱的应用"><a href="#知识图谱的应用" class="headerlink" title="知识图谱的应用"></a><a href="#%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E7%9A%84%E5%BA%94%E7%94%A8" title="知识图谱的应用"></a>知识图谱的应用</h3><p>知识图谱的应用十分广泛，涉及各个行业。比如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">+ 信息检索：搜索引擎中对实体的精准聚合和匹配、对关键词的理解以及对搜索意图的语义分析等；</span><br><span class="line">+ 自然语言理解：知识图谱中的知识作为理解自然语言中实体和关系的背景信息；</span><br><span class="line">+ 问答系统：匹配问答模式和知识图谱中知识子图之间的映射；</span><br><span class="line">+ 推荐系统：将知识图谱作为一种辅助信息集成到推荐系统中以提供更加精准的推荐选项；</span><br><span class="line">+ 电子商务：构建商品知识图谱来精准地匹配用户的购买意愿和商品候选集合；</span><br><span class="line">+ 金融风控：利用实体关系来分析金融活动的风险以提供在风险触发后的补救措施；</span><br><span class="line">+ 公安刑侦：分析实体和实体之间的关系以获得线索等；</span><br><span class="line">+ 司法辅助：法律条文的结构化表示和查询来辅助案件的判决等；</span><br><span class="line">+ 教育医疗：提供可视化的知识表示，用于药物分析、疾病诊断等；</span><br><span class="line">来源：知乎链接：https://www.zhihu.com/question/59281410/answer/579230733</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/knowledge-graph/" rel="tag"># knowledge graph</a>
+              <a href="/tags/GKG/" rel="tag"># GKG</a>
+              <a href="/tags/DKG/" rel="tag"># DKG</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/12/12/brew-lesson/" rel="prev" title="Homebrew出错的种种折腾">
+                  <i class="fa fa-angle-left"></i> Homebrew出错的种种折腾
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2020/12/16/love-is-beside-you/" rel="next" title="爱在你身边">
+                  爱在你身边 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Chunlei</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>

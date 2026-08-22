@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"lukezhg.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.29.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="下面是使用neo4j构建知识图谱的简明教程，通过一番折腾发现，学习使用一个工具最快的方法不是看文档，而是看视频，然后实操，并记录。 neo4j功能简介neo4j是一个图形数据关联软件。 可以使用它来构建和维护知识图谱。 知识图谱是智能教育的基础，它是学习者画像、智能推荐、学习分析、智慧内容以及智能导师的前提。 本案例尝试使用三元组构建图谱，所谓三元组是：节点1-连接-节点2。 首先导入csv需要将">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用neo4j构建知识图谱的简明教程">
+<meta property="og:url" content="https://lukezhg.github.io/2021/08/09/neo4j-zip-note/index.html">
+<meta property="og:site_name" content="Chunlei&#39;s Blog">
+<meta property="og:description" content="下面是使用neo4j构建知识图谱的简明教程，通过一番折腾发现，学习使用一个工具最快的方法不是看文档，而是看视频，然后实操，并记录。 neo4j功能简介neo4j是一个图形数据关联软件。 可以使用它来构建和维护知识图谱。 知识图谱是智能教育的基础，它是学习者画像、智能推荐、学习分析、智慧内容以及智能导师的前提。 本案例尝试使用三元组构建图谱，所谓三元组是：节点1-连接-节点2。 首先导入csv需要将">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://raw.github.com/lukezhg/Freyja/master/cell-protein.png">
+<meta property="article:published_time" content="2021-08-09T15:12:55.000Z">
+<meta property="article:modified_time" content="2026-08-17T08:29:42.000Z">
+<meta property="article:author" content="Chunlei">
+<meta property="article:tag" content="code">
+<meta property="article:tag" content="knowledge map">
+<meta property="article:tag" content="map">
+<meta property="article:tag" content="neo4j">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.github.com/lukezhg/Freyja/master/cell-protein.png">
+
+
+<link rel="canonical" href="https://lukezhg.github.io/2021/08/09/neo4j-zip-note/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://lukezhg.github.io/2021/08/09/neo4j-zip-note/","path":"2021/08/09/neo4j-zip-note/","title":"使用neo4j构建知识图谱的简明教程"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>使用neo4j构建知识图谱的简明教程 | Chunlei's Blog</title>
+  
+
+
+
+
+
+
+
+
+  
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Chunlei's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">刹那是永恒</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-english"><a href="/tags/en/" rel="section"><i class="fa fa-globe fa-fw"></i>English</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#neo4j%E5%8A%9F%E8%83%BD%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">neo4j功能简介</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="nav-number">1.1.</span> <span class="nav-text">常用命令</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%A9%E7%94%A8apoc%E5%88%9B%E5%BB%BA%E4%B8%89%E5%85%83%E5%9B%BE"><span class="nav-number">2.</span> <span class="nav-text">利用apoc创建三元图</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E6%A6%82%E5%BF%B51%E8%8A%82%E7%82%B9"><span class="nav-number">2.1.</span> <span class="nav-text">创建概念1节点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E6%A6%82%E5%BF%B52%E8%8A%82%E7%82%B9"><span class="nav-number">2.2.</span> <span class="nav-text">创建概念2节点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E5%85%B3%E8%81%94"><span class="nav-number">2.3.</span> <span class="nav-text">创建关联</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B8%85%E9%99%A4%E9%87%8D%E5%A4%8D%E8%8A%82%E7%82%B9%E5%92%8C%E5%85%B3%E7%B3%BB"><span class="nav-number">3.</span> <span class="nav-text">清除重复节点和关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B7%AF%E5%BE%84%E6%9F%A5%E8%AF%A2%E5%91%BD%E4%BB%A4"><span class="nav-number">4.</span> <span class="nav-text">路径查询命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%9A%E8%BF%87%E4%B8%89%E5%85%83%E7%BB%84csv%E6%95%B0%E6%8D%AE%E8%A1%A8%E5%88%9B%E5%BB%BA%E6%A6%82%E5%BF%B5%E7%BD%91%E7%BB%9C"><span class="nav-number">5.</span> <span class="nav-text">通过三元组csv数据表创建概念网络</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E8%8A%82%E7%82%B9"><span class="nav-number">5.1.</span> <span class="nav-text">添加节点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8E%BB%E9%99%A4%E9%87%8D%E5%A4%8D%E8%8A%82%E7%82%B9"><span class="nav-number">5.2.</span> <span class="nav-text">去除重复节点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E9%93%BE%E6%8E%A5"><span class="nav-number">5.3.</span> <span class="nav-text">添加链接</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E6%95%88%E6%9E%9C"><span class="nav-number">5.4.</span> <span class="nav-text">查看效果</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E5%92%8C%E5%AE%8C%E5%96%84%E5%9B%BE%E8%B0%B1"><span class="nav-number">6.</span> <span class="nav-text">修改和完善图谱</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A2%9E%E5%8A%A0%E8%8A%82%E7%82%B9"><span class="nav-number">6.1.</span> <span class="nav-text">增加节点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A2%9E%E5%8A%A0%E9%93%BE%E6%8E%A5"><span class="nav-number">6.2.</span> <span class="nav-text">增加链接</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C"><span class="nav-number">7.</span> <span class="nav-text">数据库操作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%87%E4%BB%BD%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">7.1.</span> <span class="nav-text">备份数据库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8A%A0%E8%BD%BD%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">7.2.</span> <span class="nav-text">加载数据库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%8D%E5%88%B6%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">7.3.</span> <span class="nav-text">复制数据库</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Chunlei</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">531</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">97</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">374</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://lukezhg.github.io/2021/08/09/neo4j-zip-note/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Chunlei">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chunlei's Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="使用neo4j构建知识图谱的简明教程 | Chunlei's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          使用neo4j构建知识图谱的简明教程
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-08-09 23:12:55" itemprop="dateCreated datePublished" datetime="2021-08-09T23:12:55+08:00">2021-08-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2026-08-17 16:29:42" itemprop="dateModified" datetime="2026-08-17T16:29:42+08:00">2026-08-17</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>下面是使用neo4j构建知识图谱的简明教程，通过一番折腾发现，学习使用一个工具最快的方法不是看文档，而是看视频，然后实操，并记录。</p>
+<h3 id="neo4j功能简介"><a href="#neo4j功能简介" class="headerlink" title="neo4j功能简介"></a><a href="#neo4j%E5%8A%9F%E8%83%BD%E7%AE%80%E4%BB%8B" title="neo4j功能简介"></a>neo4j功能简介</h3><p>neo4j是一个图形数据关联软件。</p>
+<p>可以使用它来构建和维护知识图谱。</p>
+<p>知识图谱是智能教育的基础，它是学习者画像、智能推荐、学习分析、智慧内容以及智能导师的前提。</p>
+<p>本案例尝试使用三元组构建图谱，所谓三元组是：节点1-连接-节点2。</p>
+<p>首先导入csv需要将文件放置在import文件夹中，从neo4j面板可以打开这个文件夹。</p>
+<p>每次修改这个文件夹，可能需要重启neo4j，否则可能无法加载。另外确保文件名一致。</p>
+<h4 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a><a href="#%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4" title="常用命令"></a>常用命令</h4><p>清空已有节点和关系<br>    MATCH (n) DETACH DELETE n</p>
+<p>导入CSV文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">LOAD CSV WITH HEADERS FROM &quot;file:///node1.csv&quot; AS line</span><br><span class="line">MERGE (z:概念1&#123;name:line.node1&#125;)</span><br><span class="line"></span><br><span class="line">LOAD CSV WITH HEADERS FROM &quot;file:///node2.csv&quot; AS line</span><br><span class="line">MERGE (z:概念2&#123;name:line.node2&#125;)</span><br><span class="line"></span><br><span class="line">LOAD CSV WITH HEADERS FROM &quot;file:///tup.csv&quot; AS line</span><br><span class="line">match (from:概念1&#123;name:line.node1&#125;),(to:概念2&#123;name:line.node2&#125;)</span><br><span class="line">merge (from)-[r:关联&#123;name:line.link&#125;]-&gt;(to)</span><br></pre></td></tr></table></figure>
+
+<p>导入并创建节点和关系</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">LOAD CSV FROM &#x27;file:///tup.csv&#x27; AS line CREATE (:Map &#123; linkID: line[0], nod1: line[1], link: line[2], nod2:line[3] &#125;);</span><br><span class="line"></span><br><span class="line">LOAD CSV FROM &#x27;file:///tup.csv&#x27; AS line</span><br><span class="line">CREATE (line[1])-[r:line[2]]-&gt;(line[3]);</span><br></pre></td></tr></table></figure>
+
+<p>显示所有关系</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">MATCH (n) RETURN (n)</span><br><span class="line"></span><br><span class="line">MATCH (n:概念1&#123;name:&quot;细胞&quot;&#125;) RETURN n</span><br><span class="line"></span><br><span class="line">MATCH (n:概念1&#123;name:&quot;细胞&quot;&#125;)-[]-() RETURN n</span><br></pre></td></tr></table></figure>
+
+<h3 id="利用apoc创建三元图"><a href="#利用apoc创建三元图" class="headerlink" title="利用apoc创建三元图"></a><a href="#%E5%88%A9%E7%94%A8apoc%E5%88%9B%E5%BB%BA%E4%B8%89%E5%85%83%E5%9B%BE" title="利用apoc创建三元图"></a>利用apoc创建三元图</h3><p>apoc是一个插件，需要先安装，然后才能调用。</p>
+<h4 id="创建概念1节点"><a href="#创建概念1节点" class="headerlink" title="创建概念1节点"></a><a href="#%E5%88%9B%E5%BB%BA%E6%A6%82%E5%BF%B51%E8%8A%82%E7%82%B9" title="创建概念1节点"></a>创建概念1节点</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">LOAD CSV WITH HEADERS FROM &quot;file:///node1.csv&quot; AS line</span><br><span class="line">call apoc.create.node([&quot;Concept1&quot;,line.node1],&#123;name:line.node1&#125;) yield node</span><br><span class="line">return node</span><br></pre></td></tr></table></figure>
+
+<h4 id="创建概念2节点"><a href="#创建概念2节点" class="headerlink" title="创建概念2节点"></a><a href="#%E5%88%9B%E5%BB%BA%E6%A6%82%E5%BF%B52%E8%8A%82%E7%82%B9" title="创建概念2节点"></a>创建概念2节点</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">LOAD CSV WITH HEADERS FROM &quot;file:///node2.csv&quot; AS line</span><br><span class="line">call apoc.create.node([&quot;Concept2&quot;,line.node2],&#123;name:line.node2&#125;) yield node</span><br><span class="line">return node</span><br></pre></td></tr></table></figure>
+
+<h4 id="创建关联"><a href="#创建关联" class="headerlink" title="创建关联"></a><a href="#%E5%88%9B%E5%BB%BA%E5%85%B3%E8%81%94" title="创建关联"></a>创建关联</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">LOAD CSV WITH HEADERS FROM &quot;file:///tup.csv&quot; AS line</span><br><span class="line">match (c1:Concept1&#123;name:line.node1&#125;),(c2:Concept2&#123;name:line.node2&#125;)</span><br><span class="line">call apoc.create.relationship(c1,line.link,line&#123;.type&#125;,c2) yield rel</span><br><span class="line">return rel</span><br></pre></td></tr></table></figure>
+
+<h3 id="清除重复节点和关系"><a href="#清除重复节点和关系" class="headerlink" title="清除重复节点和关系"></a><a href="#%E6%B8%85%E9%99%A4%E9%87%8D%E5%A4%8D%E8%8A%82%E7%82%B9%E5%92%8C%E5%85%B3%E7%B3%BB" title="清除重复节点和关系"></a>清除重复节点和关系</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">MATCH (n:Tag)</span><br><span class="line">WITH n.name AS name, COLLECT(n) AS nodelist, COUNT(*) AS count</span><br><span class="line">WHERE count &gt; 1</span><br><span class="line">CALL apoc.refactor.mergeNodes(nodelist) YIELD node</span><br><span class="line">RETURN node</span><br><span class="line"></span><br><span class="line">MATCH (n:Concept2)</span><br><span class="line">WITH n.name AS name, COLLECT(n) AS nodelist, COUNT(*) AS count</span><br><span class="line">WHERE count &gt; 1</span><br><span class="line">CALL apoc.refactor.mergeNodes(nodelist) YIELD node</span><br><span class="line">RETURN node</span><br><span class="line"></span><br><span class="line">MATCH (a:Concept1)-[r]-(b:Concept2)</span><br><span class="line">WITH a, b, collect(r) as rels</span><br><span class="line">CALL apoc.refactor.mergeRelationships(rels,&#123;properties:&quot;combine&quot;&#125;)</span><br><span class="line">YIELD rel</span><br><span class="line">RETURN count(rel)</span><br></pre></td></tr></table></figure>
+
+<h3 id="路径查询命令"><a href="#路径查询命令" class="headerlink" title="路径查询命令"></a><a href="#%E8%B7%AF%E5%BE%84%E6%9F%A5%E8%AF%A2%E5%91%BD%E4%BB%A4" title="路径查询命令"></a>路径查询命令</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"># 两节点之间的所有路径</span><br><span class="line">MATCH p=(a)-[*]-&gt;(b)</span><br><span class="line">RETURN p</span><br><span class="line"># a-&gt;b 直接连接</span><br><span class="line">MATCH p=(a)-[]-&gt;(b)</span><br><span class="line">RETURN p</span><br><span class="line"></span><br><span class="line">MATCH p=(:Concept1&#123;name:&quot;细胞&quot;&#125;)-[]-&gt;(:Concept2&#123;name:&quot;蛋白质&quot;&#125;)</span><br><span class="line">RETURN p</span><br><span class="line"></span><br><span class="line"># a-...&gt;b a、b之间有三个关系及两个节点</span><br><span class="line"># 等价于 (a) - () - () -&gt; (b)</span><br><span class="line">MATCH p=(a)-[*3]-&gt;(b)</span><br><span class="line">RETURN p</span><br><span class="line"></span><br><span class="line"># 路径包含2个以上关系</span><br><span class="line">MATCH p=(a)-[*2..]-&gt;(b)</span><br><span class="line">RETURN p</span><br><span class="line"></span><br><span class="line"># 路径包含6个以内关系</span><br><span class="line">MATCH p=(a)-[*..6]-&gt;(b)</span><br><span class="line">RETURN p</span><br><span class="line"></span><br><span class="line"># 路径包含3~5个关系</span><br><span class="line">MATCH p=(a)-[*3..5]-&gt;(b)</span><br><span class="line">RETURN p</span><br></pre></td></tr></table></figure>
+
+<h3 id="通过三元组csv数据表创建概念网络"><a href="#通过三元组csv数据表创建概念网络" class="headerlink" title="通过三元组csv数据表创建概念网络"></a><a href="#%E9%80%9A%E8%BF%87%E4%B8%89%E5%85%83%E7%BB%84csv%E6%95%B0%E6%8D%AE%E8%A1%A8%E5%88%9B%E5%BB%BA%E6%A6%82%E5%BF%B5%E7%BD%91%E7%BB%9C" title="通过三元组csv数据表创建概念网络"></a>通过三元组csv数据表创建概念网络</h3><p>这个工作用cmap或者node4j都可以做，cmap适合简单的制图，node4j更适合在服务器端构建知识图谱。下面介绍一下如何通过node4j和一个数据表来生成图库。</p>
+<p>部分csv数据表结构如下</p>
+<table>
+<thead>
+<tr>
+<th>hc</th>
+<th>link</th>
+<th>tc</th>
+<th>role</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>细胞</td>
+<td>包含</td>
+<td>细胞膜</td>
+<td></td>
+</tr>
+<tr>
+<td>细胞</td>
+<td>包含</td>
+<td>细胞质</td>
+<td></td>
+</tr>
+<tr>
+<td>细胞</td>
+<td>多包含</td>
+<td>细胞核</td>
+<td></td>
+</tr>
+<tr>
+<td>细胞</td>
+<td>包含</td>
+<td>水</td>
+<td>三分之二</td>
+</tr>
+</tbody></table>
+<p>其中hc表示head Concept，tc表示tail concept, link是连续词，role是补充说明。</p>
+<h4 id="添加节点"><a href="#添加节点" class="headerlink" title="添加节点"></a><a href="#%E6%B7%BB%E5%8A%A0%E8%8A%82%E7%82%B9" title="添加节点"></a>添加节点</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">LOAD CSV WITH HEADERS FROM &quot;file:///relation.csv&quot; AS line</span><br><span class="line">call apoc.create.node([&quot;Concept&quot;,line.hc],&#123;name:line.hc&#125;) yield node</span><br><span class="line">return node</span><br><span class="line"></span><br><span class="line">LOAD CSV WITH HEADERS FROM &quot;file:///relation.csv&quot; AS line</span><br><span class="line">call apoc.create.node([&quot;Concept&quot;,line.tc],&#123;name:line.tc&#125;) yield node</span><br><span class="line">return node</span><br></pre></td></tr></table></figure>
+
+<h4 id="去除重复节点"><a href="#去除重复节点" class="headerlink" title="去除重复节点"></a><a href="#%E5%8E%BB%E9%99%A4%E9%87%8D%E5%A4%8D%E8%8A%82%E7%82%B9" title="去除重复节点"></a>去除重复节点</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">MATCH (n:Concept)</span><br><span class="line">WITH n.name AS name, COLLECT(n) AS nodelist, COUNT(*) AS count</span><br><span class="line">WHERE count &gt; 1</span><br><span class="line">CALL apoc.refactor.mergeNodes(nodelist) YIELD node</span><br><span class="line">RETURN node</span><br></pre></td></tr></table></figure>
+
+<h4 id="添加链接"><a href="#添加链接" class="headerlink" title="添加链接"></a><a href="#%E6%B7%BB%E5%8A%A0%E9%93%BE%E6%8E%A5" title="添加链接"></a>添加链接</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">LOAD CSV WITH HEADERS FROM &quot;file:///relation.csv&quot; AS line</span><br><span class="line">match (c1:Concept&#123;name:line.hc&#125;),(c2:Concept&#123;name:line.tc&#125;)</span><br><span class="line">call apoc.create.relationship(c1,line.link,line&#123;.role&#125;,c2) yield rel</span><br><span class="line">return rel</span><br></pre></td></tr></table></figure>
+
+<h4 id="查看效果"><a href="#查看效果" class="headerlink" title="查看效果"></a><a href="#%E6%9F%A5%E7%9C%8B%E6%95%88%E6%9E%9C" title="查看效果"></a>查看效果</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">MATCH p=()--&gt;() RETURN p LIMIT 100</span><br><span class="line"></span><br><span class="line">MATCH p=(:Concept&#123;name:&quot;细胞&quot;&#125;)-[]-&gt;(:Concept&#123;name:&quot;蛋白质&quot;&#125;)</span><br><span class="line">RETURN p</span><br><span class="line"></span><br><span class="line">MATCH p=(:Concept&#123;name:&quot;细胞&quot;&#125;)-[*]-&gt;(:Concept&#123;name:&quot;蛋白质&quot;&#125;)</span><br><span class="line">RETURN p</span><br></pre></td></tr></table></figure>
+
+<p>显示结果如下：<br><img src="https://raw.github.com/lukezhg/Freyja/master/cell-protein.png" alt="map show all the linke between conception cell and protein"></p>
+<h3 id="修改和完善图谱"><a href="#修改和完善图谱" class="headerlink" title="修改和完善图谱"></a><a href="#%E4%BF%AE%E6%94%B9%E5%92%8C%E5%AE%8C%E5%96%84%E5%9B%BE%E8%B0%B1" title="修改和完善图谱"></a>修改和完善图谱</h3><h4 id="增加节点"><a href="#增加节点" class="headerlink" title="增加节点"></a><a href="#%E5%A2%9E%E5%8A%A0%E8%8A%82%E7%82%B9" title="增加节点"></a>增加节点</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">CREATE (n:Person &#123;name:&#x27;John&#x27;&#125;) RETURN n</span><br><span class="line"></span><br><span class="line">CREATE (n:Concept &#123;name:&#x27;细胞呼吸&#x27;&#125;) RETURN n</span><br></pre></td></tr></table></figure>
+
+<h4 id="增加链接"><a href="#增加链接" class="headerlink" title="增加链接"></a><a href="#%E5%A2%9E%E5%8A%A0%E9%93%BE%E6%8E%A5" title="增加链接"></a>增加链接</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">MATCH (a:Person &#123;name:&#x27;Liz&#x27;&#125;),</span><br><span class="line">      (b:Person &#123;name:&#x27;Mike&#x27;&#125;)</span><br><span class="line">MERGE (a)-[:FRIENDS]-&gt;(b)</span><br><span class="line"></span><br><span class="line">MATCH (a:Concept &#123;name:&#x27;光合作用&#x27;&#125;),</span><br><span class="line">      (b:Concept &#123;name:&#x27;光反应&#x27;&#125;)</span><br><span class="line">MERGE (a)-[:包含]-&gt;(b)</span><br><span class="line"></span><br><span class="line">MATCH (a:Concept &#123;name:&#x27;光合作用&#x27;&#125;),</span><br><span class="line">      (b:Concept &#123;name:&#x27;暗反应&#x27;&#125;)</span><br><span class="line">MERGE (a)-[:包含]-&gt;(b)</span><br><span class="line"></span><br><span class="line">MATCH p=(:Concept&#123;name:&quot;光合作用&quot;&#125;)-[*..3]-&gt;()</span><br><span class="line">RETURN p LIMIT 100</span><br></pre></td></tr></table></figure>
+
+<h3 id="数据库操作"><a href="#数据库操作" class="headerlink" title="数据库操作"></a><a href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C" title="数据库操作"></a>数据库操作</h3><h4 id="备份数据库"><a href="#备份数据库" class="headerlink" title="备份数据库"></a><a href="#%E5%A4%87%E4%BB%BD%E6%95%B0%E6%8D%AE%E5%BA%93" title="备份数据库"></a>备份数据库</h4><p>如果你对数据库进行了修改，想保留一个备份以备今后使用，那么可以使用neo4j-admin dump命令。</p>
+<p>首先先停止服务，然后在shell环境下，运行：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bin/neo4j-admin dump --database=neo4j --to=/dumps/neo4j/neo4j-&lt;timestamp&gt;.dump</span><br></pre></td></tr></table></figure>
+
+<p>具体可以参考<a target="_blank" rel="noopener" href="https://neo4j.com/docs/operations-manual/current/backup-restore/offline-backup/">官方文档</a>。</p>
+<h4 id="加载数据库"><a href="#加载数据库" class="headerlink" title="加载数据库"></a><a href="#%E5%8A%A0%E8%BD%BD%E6%95%B0%E6%8D%AE%E5%BA%93" title="加载数据库"></a>加载数据库</h4><p>你还可以使用neo4j-admin  load命令加载一个数据库。如果是替换一个已有数据库，你需要先将其停止运行。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bin/neo4j-admin load --from=/dumps/neo4j/neo4j-&lt;timestamp&gt;.dump --database=neo4j --force</span><br></pre></td></tr></table></figure>
+
+<h4 id="复制数据库"><a href="#复制数据库" class="headerlink" title="复制数据库"></a><a href="#%E5%A4%8D%E5%88%B6%E6%95%B0%E6%8D%AE%E5%BA%93" title="复制数据库"></a>复制数据库</h4><p>使用neo4j-admin copy复制或者选择性复制</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">STOP DATABASE neo4j</span><br><span class="line"></span><br><span class="line">bin/neo4j-admin copy --from-database=neo4j --to-database=copy</span><br><span class="line"></span><br><span class="line">ls -al ../data/databases</span><br><span class="line"></span><br><span class="line">CREATE DATABASE copy</span><br><span class="line"></span><br><span class="line">SHOW DATABASES</span><br></pre></td></tr></table></figure>
+
+<p>还可以筛选数据，下面的命令就是删除cat，dog标签的节点</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bin/neo4j-admin copy --from-database=neo4j --to-database=copy --delete-nodes-with-labels=&quot;Cat,Dog&quot;</span><br></pre></td></tr></table></figure>
+
+<p>参考<a target="_blank" rel="noopener" href="https://neo4j.com/docs/operations-manual/current/backup-restore/copy-database/">官方文档</a>。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/code/" rel="tag"># code</a>
+              <a href="/tags/map/" rel="tag"># map</a>
+              <a href="/tags/neo4j/" rel="tag"># neo4j</a>
+              <a href="/tags/knowledge-map/" rel="tag"># knowledge map</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/07/30/using-google-web-designer-to-make-games/" rel="prev" title="using google web designer to make games">
+                  <i class="fa fa-angle-left"></i> using google web designer to make games
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/08/27/git-hub-website-python-django/" rel="next" title="利用github完成网站维护与更新">
+                  利用github完成网站维护与更新 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Chunlei</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>

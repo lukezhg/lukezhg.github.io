@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"lukezhg.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.29.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="1.零和博弈 零和博弈（zero-sum game），又称零和游戏，与非零和博弈相对，是博弈论的一个概念，属非合作博弈。指参与博弈的各方，在严格竞争下，一方的收益必然意味着另一方的损失，博弈各方的收益和损失相加总和永远为“零”，双方不存在合作的可能。 也可以说：自己的幸福是建立在他人的痛苦之上的，二者的大小完全相等，因而双方都想尽一切办法以实现“损人利己”。零和博弈的结果是一方吃掉另一方，一方的所">
+<meta property="og:type" content="article">
+<meta property="og:title" content="博弈论中3种典型博弈">
+<meta property="og:url" content="https://lukezhg.github.io/2018/07/19/game-theory-examples/index.html">
+<meta property="og:site_name" content="Chunlei&#39;s Blog">
+<meta property="og:description" content="1.零和博弈 零和博弈（zero-sum game），又称零和游戏，与非零和博弈相对，是博弈论的一个概念，属非合作博弈。指参与博弈的各方，在严格竞争下，一方的收益必然意味着另一方的损失，博弈各方的收益和损失相加总和永远为“零”，双方不存在合作的可能。 也可以说：自己的幸福是建立在他人的痛苦之上的，二者的大小完全相等，因而双方都想尽一切办法以实现“损人利己”。零和博弈的结果是一方吃掉另一方，一方的所">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2018-07-19T03:50:00.000Z">
+<meta property="article:modified_time" content="2020-12-08T01:15:40.000Z">
+<meta property="article:author" content="Chunlei">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://lukezhg.github.io/2018/07/19/game-theory-examples/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://lukezhg.github.io/2018/07/19/game-theory-examples/","path":"2018/07/19/game-theory-examples/","title":"博弈论中3种典型博弈"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>博弈论中3种典型博弈 | Chunlei's Blog</title>
+  
+
+
+
+
+
+
+
+
+  
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Chunlei's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">刹那是永恒</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-english"><a href="/tags/en/" rel="section"><i class="fa fa-globe fa-fw"></i>English</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Chunlei</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">531</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">97</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">374</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://lukezhg.github.io/2018/07/19/game-theory-examples/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Chunlei">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chunlei's Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="博弈论中3种典型博弈 | Chunlei's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          博弈论中3种典型博弈
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2018-07-19 11:50:00" itemprop="dateCreated datePublished" datetime="2018-07-19T11:50:00+08:00">2018-07-19</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2020-12-08 09:15:40" itemprop="dateModified" datetime="2020-12-08T09:15:40+08:00">2020-12-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%8D%9A%E5%BC%88%E8%AE%BA/" itemprop="url" rel="index"><span itemprop="name">博弈论</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>1.零和博弈</p>
+<p>零和博弈（zero-sum game），又称零和游戏，与非零和博弈相对，是博弈论的一个概念，属非合作博弈。指参与博弈的各方，在严格竞争下，一方的收益必然意味着另一方的损失，博弈各方的收益和损失相加总和永远为“零”，双方不存在合作的可能。</p>
+<p>也可以说：自己的幸福是建立在他人的痛苦之上的，二者的大小完全相等，因而双方都想尽一切办法以实现“损人利己”。零和博弈的结果是一方吃掉另一方，一方的所得正是另一方的所失，整个社会的利益并不会因此而增加一分。</p>
+<p>来自：<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E9%9B%B6%E5%92%8C%E5%8D%9A%E5%BC%88">百度百科词条-零和博弈</a></p>
+<p>2.正和博弈</p>
+<p>正和博弈亦称为合作博弈，是指博弈双方的利益都有所增加，或者至少是一方的利益增加，而另一方的利益不受损害，因而整个社会的利益有所增加。</p>
+<p>合作博弈采取的是一种合作的方式，或者说是一种妥协。妥协其所以能够增进妥协双方的利益以及整个社会的利益，就是因为合作博弈能够产生一种合作剩余。这种剩余就是从这种关系和方式中产生出来的，且以此为限。至于合作剩余在博弈各方之间如何分配，取决于博弈各方的力量对比和技巧运用。因此，妥协必须经过博弈各方的讨价还价，达成共识，进行合作。在这里，合作剩余的分配既是妥协的结果，又是达成妥协的条件。</p>
+<p>来自：<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%AD%A3%E5%92%8C%E5%8D%9A%E5%BC%88">百度百科词条-正和博弈</a></p>
+<p>3.负和博弈</p>
+<p>负和博弈，是指双方冲突和斗争的结果，是所得小于所失，就是我们通常所说的其结果的总和为负数。它既包括一种两败俱伤的情况，这种情况下结果双方都有不同程度的损失；他也包括另一种“胜者”取得的利益小于“败者”承受的损失的博弈。</p>
+<p>兄弟相争<br>比如在生活，兄弟姐妹之间相互间的争东西，其结果就很容易形成这种两败俱伤。一对双胞胎兄弟，妈妈给她们俩人买了两个玩具，一个是神材魁梧、穿着金属外壳的变形金刚，一个是会自动说话的玩具娃娃，看到那个变形金刚，兄弟俩人同时都喜欢上了，而都讨厌那个玩具娃娃，他们一致认为，玩具娃娃这类玩具是女孩子玩的，所以，他们两个人都想独自占有那个魁梧的变形金刚，于是矛盾便出现了，哥哥想要这个变形金刚，弟弟偏不让，弟弟也想独占，哥哥偏不同意，于是，干脆把变形金刚扔掉，谁都别想要。</p>
+<p>“负和博奕”之于价格波动<br>市场“负和博奕”的性质在价格波动特征上有充分的体现。以道氏理论为例，道氏理论将价格波动分三个级别：主要（原始）趋势、次级（逆向、反复）趋势、日常（短期）波动。撇开道氏理论的具体实践问题，结合上文论述，可以进一步推断：主要趋势是证券期货市场投资人获利的主要基础，次级趋势和日常波动则是证券期货市场存在及正常运转的基础。次级趋势的主要市场功能是隐蔽主要趋势，使市场走向的真正意图不被大多数人所觉察，并使大多数人在大多数时候被次级趋势所误导，从而作出错误的决策。日常波动的主要市场功能是使操作盈利看起来很容易，以诱使一批又一批的投资人不断为市场注入资金，从而保证市场的延续和长盛不衰。次级移动和日常波动具体来说，就是以大量的市场假象的方式使投资人错误地进场，同时在投资人正确进场后使投资人错误地离场。次级趋势隐蔽主要趋势及日常波动诱资入市的市场功能，从根本上保证了只有少数人成为赢家，最终使以“负和博奕”为特征的投资游戏规则得以维护。</p>
+<p>来自：<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E8%B4%9F%E5%92%8C%E5%8D%9A%E5%BC%88">百度百科词条-负和博奕</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2018/06/28/be-special-be-real/" rel="prev" title="做个色的自己">
+                  <i class="fa fa-angle-left"></i> 做个色的自己
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2018/07/24/how-to-write-a-literature-review/" rel="next" title="如何撰写文献综述">
+                  如何撰写文献综述 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Chunlei</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>

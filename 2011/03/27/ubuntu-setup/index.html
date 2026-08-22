@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"lukezhg.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.29.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="很早就听周围的朋友推荐ubuntu（英文单词不好念，我就戏称它为啊笨图，其实它一点也不笨），但是一直没有动手。原因其实很简单，就像要居家搬迁一样，如果不是必要，谁也不愿意到异地他乡重建家园。但是最近xp让我很无奈，是不是死机，而且我喜欢尝试一些新的软件，这样c盘的windows就越来越大，感觉像一个越来越臃肿的政府，庞大到了一定程度，就不再是它为用户服务，而是用户围着它转，这的确是挺烦的，编程者可">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ubuntu新手上路之系统安装篇-穷折腾是良好的学习开始">
+<meta property="og:url" content="https://lukezhg.github.io/2011/03/27/ubuntu-setup/index.html">
+<meta property="og:site_name" content="Chunlei&#39;s Blog">
+<meta property="og:description" content="很早就听周围的朋友推荐ubuntu（英文单词不好念，我就戏称它为啊笨图，其实它一点也不笨），但是一直没有动手。原因其实很简单，就像要居家搬迁一样，如果不是必要，谁也不愿意到异地他乡重建家园。但是最近xp让我很无奈，是不是死机，而且我喜欢尝试一些新的软件，这样c盘的windows就越来越大，感觉像一个越来越臃肿的政府，庞大到了一定程度，就不再是它为用户服务，而是用户围着它转，这的确是挺烦的，编程者可">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://img.zemanta.com/pixy.gif?x-id=078f640e-cba5-8d80-8710-11df07f3f7cb">
+<meta property="article:published_time" content="2011-03-26T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-12-08T01:15:40.000Z">
+<meta property="article:author" content="Chunlei">
+<meta property="article:tag" content="Ubuntu">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://img.zemanta.com/pixy.gif?x-id=078f640e-cba5-8d80-8710-11df07f3f7cb">
+
+
+<link rel="canonical" href="https://lukezhg.github.io/2011/03/27/ubuntu-setup/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://lukezhg.github.io/2011/03/27/ubuntu-setup/","path":"2011/03/27/ubuntu-setup/","title":"Ubuntu新手上路之系统安装篇-穷折腾是良好的学习开始"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Ubuntu新手上路之系统安装篇-穷折腾是良好的学习开始 | Chunlei's Blog</title>
+  
+
+
+
+
+
+
+
+
+  
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Chunlei's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">刹那是永恒</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-english"><a href="/tags/en/" rel="section"><i class="fa fa-globe fa-fw"></i>English</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Chunlei</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">531</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">97</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">374</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://lukezhg.github.io/2011/03/27/ubuntu-setup/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Chunlei">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chunlei's Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Ubuntu新手上路之系统安装篇-穷折腾是良好的学习开始 | Chunlei's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Ubuntu新手上路之系统安装篇-穷折腾是良好的学习开始
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2011-03-27 00:00:00" itemprop="dateCreated datePublished" datetime="2011-03-27T00:00:00+08:00">2011-03-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2020-12-08 09:15:40" itemprop="dateModified" datetime="2020-12-08T09:15:40+08:00">2020-12-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Ubuntu/" itemprop="url" rel="index"><span itemprop="name">Ubuntu</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>很早就听周围的朋友推荐ubuntu（英文单词不好念，我就戏称它为啊笨图，其实它一点也不笨），但是一直没有动手。原因其实很简单，就像要居家搬迁一样，如果不是必要，谁也不愿意到异地他乡重建家园。但是最近xp让我很无奈，是不是死机，而且我喜欢尝试一些新的软件，这样c盘的windows就越来越大，感觉像一个越来越臃肿的政府，庞大到了一定程度，就不再是它为用户服务，而是用户围着它转，这的确是挺烦的，编程者可能感受更深。<br /><br />但是想一下子彻底的搬，对于我还真是困难，因为已经熟悉和搭建好的工作环境，要是一下至到了一个陌生的环境，还真不适应，影响工作。于是我想了一个折中的办法，把啊笨安装在移动硬盘上，这样什么时候想体验一下ubuntu，什么时候插上就行，而眼前的工作还是可以在xp下完成。<br /><br />下载了unbuntu 10.04[<a target="_blank" href="http://www.ubuntu.org.cn/netbook/get-ubuntu/download/">http://www.ubuntu.org.cn/netbook/get-ubuntu/download/</a>], 然后制作了live usb，虽然可以在live usb上体验，但是用户的设置不会被保留.所以还是必须安装啊笨才行。我安装的过程参照了教程[真正把Ubuntu装到移动硬盘里 <a target="_blank" href="http://ubuntuabc.com/123/?p=58">http://ubuntuabc.com/123/?p=58</a>] ,但是在第5步的时候，我选择手动指定分区之后，什么也没有显示，于是我只好删除了移动硬盘上的第一分区，然后选择使用最大的连续空间，这样可以继续安装下去了。<br /><br />但是安装了之后，可以启动移动硬盘上的ubun，似乎一切正常，但是当我拔掉移动硬盘之后，开机显error no such device #@###@，grub rescue示，xp启动不了了，必须连上移动硬盘才能引导xp启动。这让我很恼火，难道以后我每次都要背着移动硬盘到处跑吗。显然我希望，没有移动硬盘，也要让xp工作才行。于是我开始google了解，原来是安装ubuntu的时候，把xp的mbr（主引导记录）文件给覆盖了，这是ubuntu安装时默认覆盖的。没办法，之后再Google选找解决方案，我找到了下面3篇比较有用的方案：<br /><ol><li>在移动硬盘中安装ubuntu的一点小问题解决_游走江湖_百度空间: <a target="_blank" href="http://hi.baidu.com/mi2006/blog/item/cdb015242dd17e3cc89559ed.html">http://hi.baidu.com/mi2006/blog/item/cdb015242dd17e3cc89559ed.html</a></li><li>移动硬盘上安装Ubuntu，拔掉移动硬盘后，本地硬盘上xp系统却引导不了_G号→攻击_百度空间: <a target="_blank" href="http://hi.baidu.com/xute1126/blog/item/a5db8d09c307e82c6a60fb55.html">http://hi.baidu.com/xute1126/blog/item/a5db8d09c307e82c6a60fb55.html</a></li><li>当硬盘不能引导的时候：<a target="_blank" rel="noopener" href="http://www.guanwei.org/post/tech/09/MBR.html">http://www.guanwei.org/post/tech/09/MBR.html</a></li></ol><br />但是这些方案让我很纠结，因为他们遇到的情况虽然和我相似，但是并不完全一样。<br />第1个方案把问题描述的最清楚，但是我没有xp的安装盘，我这个是上网本，没有光驱。<br />第2个方案，虽然我也下载了相关的程序，但是发现在我的xp系统引入后，根本无法使用grubinst_gui把grub4dos安装到MBR，而且它要求把grub4dos的两个文件拷贝到fat16格式的盘符中，我系统全都是ntfs，硬盘是fat32，哪来的fat16吗，所以也不行。<br />第3个方案，我尝试下载了winPE精简版，然后做了U盘启动盘，结果还是启动不了。<br /><br />其实关键问题在于修复被覆盖过的xp的MBR文件，于是我开始google修复MBR文件的文章，最后我发现一个解决方案：<br />如何恢复XP的MBR « 俞弘的网络日志: <a target="_blank" href="http://www.eusoftware.com/hongyu/?p=54">http://www.eusoftware.com/hongyu/?p=54</a><br /><br />按照这个方案，我进行了修复，结果可以正常启动xp了。问题终于算是解决了。庆祝一下[--ddd--]<br /><br />现在我可以享用xp就用xp，享用啊笨就用ubuntu。但是，但是，还有以下问题待解决：<br />如何在ubuntu下给我的Ausu EEE PC 1101Ha驱动显卡？<br />如何在ubuntu下安装tar.gz的软件包？<br />我的xp虽然可以正常启动，但是网卡驱动却出现了问题，而且再重启的时候也出现过几次屏幕颤抖和变色，这又如何解决？<br /><br />如果你看到这篇文章，恰巧有知道，请不吝赐教！<br /><br />总结，有的时候纯属穷折腾，结果遇到不少问题，于是迫不得已硬着头皮进行问题解决，结果学习发生了。试想，如果我们只是停留在自己原有的熟悉的环境中，又怎能发现自己还有这么多东西不知道呢，所以说，穷折腾是良好的学习开始！<br /><br /><div class="zemanta-pixie"><img class="zemanta-pixie-img" alt="" src="http://img.zemanta.com/pixy.gif?x-id=078f640e-cba5-8d80-8710-11df07f3f7cb" /></div></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Ubuntu/" rel="tag"># Ubuntu</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2011/03/24/pbl-is-a-good-teaching-strategy-2/" rel="prev" title="问题解决是一种非常好的教学策略">
+                  <i class="fa fa-angle-left"></i> 问题解决是一种非常好的教学策略
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2011/03/29/The-chromosomal-group-and-basketball-team/" rel="next" title="染色体组与篮球队">
+                  染色体组与篮球队 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Chunlei</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>

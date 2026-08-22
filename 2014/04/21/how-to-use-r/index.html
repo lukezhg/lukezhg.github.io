@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"lukezhg.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.29.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="##week1 getwd() #获取当前工作目录 setwd(dir) #设定当前工作目录 也可以直接通过菜单界面设定 source(&quot;myfunction.R&quot;) #加入源之后才可以使用这个函数  ##week2 #list &gt; a  b  b  c(1,2)*c(2,3) [1] 2 6  &gt; m  mynames  mytable  union(x, y) #并集 &gt; intersect">
+<meta property="og:type" content="article">
+<meta property="og:title" content="R语言学习笔记">
+<meta property="og:url" content="https://lukezhg.github.io/2014/04/21/how-to-use-r/index.html">
+<meta property="og:site_name" content="Chunlei&#39;s Blog">
+<meta property="og:description" content="##week1 getwd() #获取当前工作目录 setwd(dir) #设定当前工作目录 也可以直接通过菜单界面设定 source(&quot;myfunction.R&quot;) #加入源之后才可以使用这个函数  ##week2 #list &gt; a  b  b  c(1,2)*c(2,3) [1] 2 6  &gt; m  mynames  mytable  union(x, y) #并集 &gt; intersect">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2014-04-21T15:35:00.000Z">
+<meta property="article:modified_time" content="2020-12-08T01:15:40.000Z">
+<meta property="article:author" content="Chunlei">
+<meta property="article:tag" content="R">
+<meta property="article:tag" content="code">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://lukezhg.github.io/2014/04/21/how-to-use-r/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://lukezhg.github.io/2014/04/21/how-to-use-r/","path":"2014/04/21/how-to-use-r/","title":"R语言学习笔记"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>R语言学习笔记 | Chunlei's Blog</title>
+  
+
+
+
+
+
+
+
+
+  
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Chunlei's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">刹那是永恒</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-english"><a href="/tags/en/" rel="section"><i class="fa fa-globe fa-fw"></i>English</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Chunlei</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">531</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">97</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">374</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://lukezhg.github.io/2014/04/21/how-to-use-r/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Chunlei">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chunlei's Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="R语言学习笔记 | Chunlei's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          R语言学习笔记
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2014-04-21 23:35:00" itemprop="dateCreated datePublished" datetime="2014-04-21T23:35:00+08:00">2014-04-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2020-12-08 09:15:40" itemprop="dateModified" datetime="2020-12-08T09:15:40+08:00">2020-12-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BB%9F%E8%AE%A1/" itemprop="url" rel="index"><span itemprop="name">统计</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><pre><code>
+##week1
+getwd() #获取当前工作目录
+setwd(dir) #设定当前工作目录 也可以直接通过菜单界面设定
+source("myfunction.R") #加入源之后才可以使用这个函数
+
+##week2
+#list
+> a <- 1:10
+> b <- c(1,3,4,5,8,9,11,14,15,18)
+> b <- b[-2] #去除第二个元素
+> c(1,2)*c(2,3)
+[1] 2 6
+
+> m <- c(1,2,3)
+> mynames <- c("1-2","2-3","4-5")
+> mytable <- setNames(m,mynames)#之后可以通过name来调用元素值
+1-2 2-3 4-5 
+  1   2   3 
+
+> union(x, y) #并集
+> intersect(x, y) #交集
+> setdiff(x, y) #前者有后者没有的
+> setequal(x, y) #元素是否全部相同
+> is.element(el, set)
+> unlist() #将层级list变为单层
+> unique(x) # 获取非重复元素
+
+# logical operation
+x <- FALSE
+y <- TRUE
+! x
+x & y
+x && y
+x | y
+x || y
+xor(x, y)
+
+isTRUE(x)
+cbind(a,b) #
+rbind(a,b) #
+length(a) #
+class(a)
+as.character()
+as.logical()
+as.numeric()
+m <- matrix(a,nrow=2,ncol=5)
+dim(m) #[1] 2 5
+attributes(m) $dim [1] 2 5
+m <- 1:10
+dim(m) < c(2,5) #
+f <- factor("yes","no","yes","yes")
+table(f) # yes 3 no 1
+x <- c()
+x <- c(x,1)
+mean() #求平均值
+cor(a,b) #求相关系数
+is.na()
+is.nan()
+
+## file 文件
+read.table() #读取txt表格
+read.csv() #读取csv文件
+# 写文件略过row name
+write.csv(data, "data.csv", row.names=FALSE)
+# 同样写文件，当用空白替换"NA"
+write.csv(data, "data.csv", row.names=FALSE, na="")
+# 使用tabs略过row col name
+write.table(data, "data.csv", sep="\t", row.names=FALSE, col.names=FALSE) 
+参考[Cookbook for R » Writing data to a file](http://www.cookbook-r.com/Data_input_and_output/Writing_data_to_a_file/)
+write.table(sim, "pcksim.csv", row.names=na,col.names=c("",na),sep = ",") # 可以写列名称
+
+names()
+x[!is.na(x)] # 去除缺失的数据
+data <- data.frame(id=1:10,height=170:180)
+data["id"] #返回局部data.frame
+data["id"][!is.na(data["height"])] #返回height无缺失的id
+data[[id]] #返回vector
+paste("00","1",".csv",sep="") # 001.csv
+paste(a,collapse="") # 将一个list连成一个长字符
+
+for (i in 1:length(id)){
+    s <- as.character(id[i])
+    spre <- paste(rep("0",3-nchar(s)),collapse="") # use collapse join vector
+    fn <- paste(directory,"/",spre,s,".csv",sep="") # use sep to join string
+    data <- read.csv(fn)
+}
+
+if(length(x)>0){print(x)}else{}
+
+##Week3
+x <- list(a=1:5,b=rnorm(10))
+lapply(x,mean)#$a[1] 3  $b[1] 0.03937816
+如果x不是一个list,那么它将被自动转换成list,相当于使用as.list()函数
+x <- list(a=matrix(1:4,2,2),b=matrix(1:6,3,2))
+lapply(x,function(elt)elt[,1]) #$a[1] 1 2  $b[1] 1 2 3
+lapply(x,function(elt) strsplit(elt,"-")) #对每个元素使用“-”进行拆分
+sapply(x,mean) #会自动简化结果，返回一个vector或者matrix，不能简化返回list
+x <- matrix(rnorm(200),20,10)
+apply(x,2,mean) #返回10列的均值
+apply(x,1,sum) #返回每行的总和共20个
+a <- array(rnorm(2*2*10),c(2,2,10)) #三维数组
+apply(a,c(1,2),mean)
+          [,1]      [,2]
+[1,] 0.1888774 0.5517366
+[2,] 0.2667046 0.2412767
+
+str() #Compactly Display the Structure of an Arbitrary R Object
+str(tapply)
+> x <- c(rnorm(10),runif(10),rnorm(10,1))
+> f <-gl(3,10) #生成标签 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 2 2 3 3 3 3 3 3 3 3 3 3
+> tapply(x,f,mean) #具有相同标签的数值的平均值
+with(mtcars, tapply(mpg, cyl, mean))# mtcars is a data.frame with cyl and mpg
+
+> split(x,f) #利用标签将list进行拆分
+> s <- split(airdata, airdata$Month)
+> lapply(s,function(x) colMeans(x[,c("Ozone","Solar.R","Wind")]))
+split(x,list(f1,f2),drop=TRUE) # empty levels can be dropped
+
+## 字符串 string
+> as.character()
+> strsplit("1-2,3-4,5-6",",") #对字符串进行拆分
+> strsplit("1-2,3-4,5-6",",")[[1]][1] #返回 "1-2"
+> paste(rev(strsplit("abc", split = "")[[1]]), collapse = "") #反转字符串
+> grep("bcd", "abcd") # return 1 # 
+> regexpr("bcd","aabcd")
+[1] 3
+attr(,"match.length")
+[1] 3
+attr(,"useBytes")
+[1] TRUE
+
+> gregexpr("1","1-2,2-3,1-5") #返回所有匹配位置 也能利用length获取匹配数目
+> length(gregexpr("1","1-2,2-3,1-5,1-9,1-8")[[1]]) #返回4
+
+
+> mapply(rep,1:4,4:1)
+[[1]]
+[1] 1 1 1 1
+
+[[2]]
+[1] 2 2 2
+
+[[3]]
+[1] 3 3
+
+[[4]]
+[1] 4
+
+## debug
+traceback() # print out where error occurs,else do nothing
+debug() # step through one line at a time
+browser() #suspend the execution wherever called and put it in debug mode
+trace() # insert debug code in specific place
+
+#Play with the iris data
+library(datasets)
+data(iris)
+
+#Play with $
+> x <- makeCacheMatrix()
+> x
+$set
+function (y) 
+{
+    x <<- y
+    inv <<- NULL
+}
+
+$get
+function () 
+x
+
+$setinverse
+function (inverse) 
+inv <<- inverse
+
+$getinverse
+function () 
+inv
+
+> x$set(matrix(rnorm(9),3,3))
+> x$get()
+
+> x$set(a)
+> x$get()
+            [,1]      [,2]       [,3]
+[1,] -0.50184759 -0.751659 -2.1276852
+[2,]  0.37466264 -1.448643  1.1807655
+[3,] -0.06093845  0.740338 -0.8508723
+> cacheSolve(x)
+           [,1]       [,2]       [,3]
+[1,] -0.4668678  2.8847043  5.1705844
+[2,] -0.3214999 -0.3872940  0.2664879
+[3,] -0.2462983 -0.5435808 -1.3137063
+
+#week4
+#统计
+str(str)# see the structure of a object
+m <- matrix(rnorm(100),10,10)
+str(m)
+str(lm)
+str(ls)
+x <- rnorm(100,2,4)
+summary(x) #摘要
+table(x) #返回频数表
+str(x)
+
+#作图
+hist(rnorm(1000,2,4))
+hist(BMI, breaks=20, main="Breaks=20")
+hist(BMI, breaks=seq(17,32,by=3), main="Breaks is vector of breakpoints")
+seq(0, 1, length.out = 10) #在一定范围产生制定数目的序列
+plot(x,y)
+
+#拟合
+> set.seed(20)  #进而可以再次产生同样的随机数 方便别人重复模拟
+> x <- rnorm(100)
+> e <-rnorm(100,0,2)
+> y <- 0.5+2*x+e
+> sumary(y)
+
+#评估运算时间 user time（cpu 时间消耗）elipsed time(流逝壁钟时间)
+> system.time(readLines("http://www.jhsph.edu"))
+
+#就
+make.Negloglik <- function(data, fixed=c(FALSE,FALSE)){
+    params<- fixed
+    function(p){
+        params[!fixed] <- p
+        mu <- params[1]
+        sigma <- params[2]
+        a <- -0.5*length(data)*log(2*pi*sigma^2)
+        b <- -0.5*sum((data-mu)^2)/(sigma^2)
+        -(a+b)
+    }
+}
+set.seed(1)
+normals <- rnorm(100,1,2)
+nLL <- make.Negloglik(normals)
+optim(c(mu=0,sigma=1),nLL)$par
+
+> # Fixing sigma=2
+> nLL <- make.Negloglik(normals,c(FALSE,2))
+> optimize(nLL,c(-1,3))$minimum
+[1] 1.217775
+> optimize(nLL,c(-1,2))$minimum
+[1] 1.217775
+> #Fixing u=1
+> nLL <- make.Negloglik(normals,c(1,FALSE))
+> optimize(nLL,c(1e-6,10))$minimum
+[1] 1.800596
+> nLL <- make.Negloglik(normals,c(1,FALSE))
+> x <- seq(1.7,1.9,len=100)
+> y <- sapply(x,nLL)
+> plot (x,exp(-(y-min(y))),type="l")
+> nLL <- make.Negloglik(normals,c(FALSE,2))
+> x <- seq(0.5,1.5,len=100)
+> y <-sapply(x,nLL)
+> plot(x,exp(-(y-min(y))),type="l")
+
+
+Assignment 3
+#在R中有的时候表达方式是不一样的，比如
+引用某个变量的子变量用
+time$year #而不是time.year
+
+##常犯错误
+该使用[]的时候错误的使用了（），特别是在操作data.frame的时候
+该使用[[]]错误的使用了[]，前者可以变为向量，后者还是data.frame
+忘记了使用%%进行
+判断是否包含 
+"a" %in% c("a","b","c")
+表示数组相乘用 
+%*%
+
+如何使用Order
+> (ii <- order(x <- c(1,1,3:1,1:4,3), y <- c(9,9:1), z <- c(2,1:9)))
+ [1]  6  5  2  1  7  4 10  8  3  9
+ > rbind(x, y, z)[,ii] # shows the reordering (ties via 2nd & 3rd arg)
+  [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]
+x    1    1    1    1    2    2    3    3    3     4
+y    5    6    9    9    4    7    1    3    8     2
+z    5    4    1    2    6    3    9    7    2     8
+
+
+</code></pre>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/R/" rel="tag"># R</a>
+              <a href="/tags/code/" rel="tag"># code</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2014/04/19/how-to-generate-electricity/" rel="prev" title="不同发电机的原理">
+                  <i class="fa fa-angle-left"></i> 不同发电机的原理
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2014/04/29/lost-in-local-extrema/" rel="next" title="Lost in local extrema">
+                  Lost in local extrema <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Chunlei</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>
