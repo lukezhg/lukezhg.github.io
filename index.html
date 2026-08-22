@@ -191,7 +191,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2026/08/22/try-bolg-again/" class="post-title-link" itemprop="url">try bolg again</a>
+          <a href="/2026/08/22/try-bolg-again/" class="post-title-link" itemprop="url">博客系统重新启动</a>
         </h2>
 
         <div class="post-meta-container">
@@ -203,7 +203,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2026-08-22 14:52:28 / Modified: 14:53:35" itemprop="dateCreated datePublished" datetime="2026-08-22T14:52:28+08:00">2026-08-22</time>
+      <time title="Created: 2026-08-22 14:52:28 / Modified: 17:36:25" itemprop="dateCreated datePublished" datetime="2026-08-22T14:52:28+08:00">2026-08-22</time>
     </span>
 
   
@@ -217,6 +217,16 @@
     
     <div class="post-body" itemprop="articleBody">
           <p>尝试重新开始记录生活和写博客。</p>
+<h2 id="最简完整一套（每次更新博客就依次敲这三组）"><a href="#最简完整一套（每次更新博客就依次敲这三组）" class="headerlink" title="最简完整一套（每次更新博客就依次敲这三组）"></a>最简完整一套（每次更新博客就依次敲这三组）</h2><p>1 本地预览测试<br>hexo clean &amp;&amp; hexo s</p>
+<p>2 备份源码（新开终端，或者Ctrl+C关掉预览后执行）<br>git add .<br>git commit -m “更新描述”<br>git push</p>
+<p>3 发布线上网站<br>hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</p>
+<h2 id="以后换电脑恢复博客（备用，记下来）"><a href="#以后换电脑恢复博客（备用，记下来）" class="headerlink" title="以后换电脑恢复博客（备用，记下来）"></a>以后换电脑恢复博客（备用，记下来）</h2><p>git clone -b source <a href="mailto:&#103;&#x69;&#116;&#64;&#x67;&#x69;&#116;&#x68;&#x75;&#98;&#x2e;&#x63;&#x6f;&#x6d;">git@github.com</a>:lukezhg&#x2F;lukezhg.github.com.git myblog<br>cd myblog<br>npm install<br>hexo s</p>
+<h2 id="重要注意事项"><a href="#重要注意事项" class="headerlink" title="重要注意事项"></a>重要注意事项</h2><ol>
+<li><strong>永远不要手动切换本地 master 分支</strong>，master 交给<code>hexo d</code>内部<code>.deploy_git</code>处理。本地只操作<code>source</code>分支。</li>
+<li>只做本地修改，没有上传 github：只执行 <code>hexo s</code>，不要执行 git push 和 hexo d。</li>
+<li><code>.gitignore</code>不要改动，避免上传<code>node_modules</code>、<code>public</code>。</li>
+<li><strong>git push &#x3D; 备份源代码；hexo d &#x3D; 发布网页</strong>，两件事分开，不要混淆。</li>
+</ol>
 
       
     </div>
