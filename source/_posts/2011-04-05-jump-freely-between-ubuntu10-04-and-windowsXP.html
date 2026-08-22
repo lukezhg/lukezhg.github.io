@@ -1,0 +1,9 @@
+---
+layout: post
+title: 终于能在ubuntu10.04与xp之间自由切换了
+categories: []
+tags: []
+published: true
+comments: true
+---
+<p>前些天，在一番穷折腾之后（Ubuntu新手上路之系统安装篇-穷折腾是良好的学习开始 « chunlei's blog: http://sociallearnlab.org/chunlei/2011/03/27/archives/180），终于把启动的问题解决了。<br /><br />问题表现：能够更改bios的启动顺序来选择要启动的系统，但是不能自己在grub4dos下启动ubuntu10.04。<br />解决过程：先下载最新版本的grub4dos,解压缩后，把其中的grldr和menu.lst两个文件拷贝到c盘根目录下。<br />替换menu.lst的内容如下：<br /><blockquote>timeout 10<br />default /default<br />title Ubuntu 10.04<br />find /boot/grub/core.img<br />root (hd1,1)<br />kernel /boot/grub/core.img<br />boot<br /></blockquote>修改C盘根目录的boot.ini，在最后加上一行 c:\grldr="grub4dos"。方法，我的电脑-右键属性-高级-启动与故障修复-设置-编辑-保存即可。<br /><br />但是尝试了几次，都提示错误，找不到文件。后来我在ubuntu上没有安装grub，并且用手工的方式确定了ubuntu所在位置为 （hd1,1）修改了menu.lst后问题解决！吼！<br /><br /><br />关于grub4dos的使用参考和修改boot.ini请参考：在移动硬盘中安装ubuntu的一点小问题解决_游走江湖_百度空间: http://hi.baidu.com/mi2006/blog/item/cdb015242dd17e3cc89559ed.html<br /><br /><br /><br /><div class="zemanta-pixie"><img class="zemanta-pixie-img" alt="" src="http://img.zemanta.com/pixy.gif?x-id=a0016852-a3bc-8474-8036-61a54f84cf0e" /></div></p>

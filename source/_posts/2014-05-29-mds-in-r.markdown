@@ -1,0 +1,33 @@
+---
+layout: post
+title: "Multidimensional Scaling in R"
+date: 2014-05-29 22:10
+comments: true
+categories: "统计"
+tags: [R,MDS,network analysis,en]
+---
+I met this problem when I was analysing teachers' PCK concept maps. I wanted to divide them into several clusters that shared the similar structures(nodes and links).  
+
+One approch is plotting them in a 2d picture to see if there is any patterns. But before that, you have to do the Muultidimensional Scaling to get your (x,y) from your Distance Matrix.  
+
+Distance Matrix  
+![Distance Matrix](https://raw.github.com/lukezhg/Freyja/master/distance-matrix.png)  
+How I got this matrix. Well, I just count them using my data. Of course, if can deside how you count them, which counts how much score, or you simply give them a number.  
+<pre><code>
+# 1) MDS 'cmdscale'
+dm <- read.table("distance-matrix.txt")
+mds1 = cmdscale(dm, k = 2)
+
+# plot
+plot(mds1[,1], mds1[,2], type = "n", xlab = "", ylab = "", axes = FALSE, main = "cmdscale (stats)")
+text(mds1[,1], mds1[,2], labels(x)[[1]], cex = 0.9, xpd = TRUE)
+</code></pre>
+
+This the x y data I got:  
+![Distance Matrix](https://raw.github.com/lukezhg/Freyja/master/xy-data-mds.png)  
+
+I got this picture after plotting it out.  
+![Distance Matrix](https://raw.github.com/lukezhg/Freyja/master/plot-mds.png)  
+
+Reference:  
+[7 Functions to do Metric Multidimensional Scaling in R | Gaston Sanchez](http://gastonsanchez.com/blog/how-to/2013/01/23/MDS-in-R.html)  

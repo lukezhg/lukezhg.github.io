@@ -1,0 +1,65 @@
+---
+layout: post
+title: "重装Ubuntu备忘"
+date: 2015-11-26 10:54
+comments: true
+categories: [Ubuntu]
+tags: [Ubuntu,os]
+---
+安装软件：  
+输入法 ：搜狗输入法  
+视频播放：VLC media player  
+文本编辑：Vim  
+图片查看：gwenview  
+浏览器：firefox(插件：list.it,adblock,autoproxy,diigo,video downloadhelper,evernote clearly,firegestrues)  
+
+
+firefox安装flash插件  
+<code>
+sudo apt-get update  
+sudo apt-get install flashplugin-installer  
+</code>
+
+开机亮度设置  
+一个脚本让你的Ubuntu 14.04记忆屏幕亮度_Linux教程  
+
+[http://www.linuxidc.com/Linux/2014-09/106847.htm](http://www.linuxidc.com/Linux/2014-09/106847.htm)  
+
+网络不稳定  
+修改/etc/ppp/options  
+	sudo gedit options  
+应会发以下选项：  
+	lcp-echo-interval 30  
+	lcp-echo-failure 4  
+这表示系统 30 秒会向 ADSL 服务器发出 echo request 以确认连线是否正常。如果 ADSL 服务器 120 秒 (30 秒 x 4) 都没有回应，系统会假定连线有问题，自动断开。您可以把 lcp-echo-failure 加大至 15 ：  
+	lcp-echo-interval 30  
+	lcp-echo-failure 15  
+
+安装scikit-learn  
+<code>
+python 运行文件名  
+python -V  
+sudo apt-get install python3-pip  
+sudo apt-get install python-scipy  
+sudo apt-get install python-numpy  
+sudo apt-get install python-matplotlib  
+sudo apt-get install nautilus-open-terminal  
+</code>
+
+pip install -U scikit-learn  
+参考：
+Installing scikit-learn — scikit-learn 0.17 documentation  
+http://scikit-learn.org/stable/install.html  
+
+Install Python, NumPy, SciPy, and matplotlib on Mac OS  
+http://penandpants.com/2012/02/24/install-python/  
+
+
+安装 ipython notebook  
+   pip install ipython
+   apt-get install ipython-notebook  
+   ipython notebook --pylab inline --ip 0.0.0.0  
+   然后用了浏览器访问对应的ip即可看到  
+
+参考：python - How to install ipython notebook locally? - Stack Overflow  
+http://stackoverflow.com/questions/17790558/how-to-install-ipython-notebook-locally  

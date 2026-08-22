@@ -1,0 +1,13 @@
+---
+layout: post
+title: "用xampp布置了php开发环境"
+date: 2013-02-05 09:23
+comments: true
+categories: 
+tags: 
+---
+参考了网上的教程，使用xampp布置了php开发环境，目前正在摸索中。  
+[ubuntu下关于xampp的配置说明_木木齊_新浪博客](http://blog.sina.com.cn/s/blog_659b2b32010154v9.html)  
+下载xampp地址：[http://down.tech.sina.com.cn/page/36356.html](http://down.tech.sina.com.cn/page/36356.html)  
+
+使用技巧待续。  

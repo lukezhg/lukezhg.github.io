@@ -1,0 +1,22 @@
+---
+layout: post
+title: "NARST 2015"
+date: 2015-04-17 13:24
+comments: true
+categories: [meeting,会议]
+tags: [NARST2015, Academic family,pic,en]
+---
+This is the second time I attend NARST. Like last time, lots of thing is going on at the same time, but I can catch much more than before.  
+
+Here are some pictures of my presentations and my academic families.  
+![Chunlei Presenting 1](https://raw.github.com/lukezhg/Freyja/master/NARST2015_chunlei1.jpg)  
+<!--more-->  
+![Chunlei Presenting 2](https://raw.github.com/lukezhg/Freyja/master/NARST2015_chunlei2.jpg)  
+
+![With Professor Liu family](https://raw.github.com/lukezhg/Freyja/master/Liu_family.jpg)  
+
+![With Dr Luft family](https://github.com/lukezhg/Freyja/raw/master/Luft_family.jpg)  
+
+![Chicago on day](https://raw.github.com/lukezhg/Freyja/master/NARST2015_Chicago_day.jpg)  
+
+![Chicago on night](https://raw.github.com/lukezhg/Freyja/master/NARST2015_Chicago_Night.jpg)  

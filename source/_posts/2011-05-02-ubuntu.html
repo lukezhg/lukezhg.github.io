@@ -1,0 +1,10 @@
+---
+layout: post
+title: 安装ubuntu3d桌面的问题
+categories:
+- Ubuntu
+tags: []
+published: true
+comments: true
+---
+<p>本来想安装3d桌面但是出了很多问题，后来直接进不去系统了，发现自己这个本本显卡实在是不给力，(ausu 1101 ha Intel gma500)，后来放弃了。但是我觉得还是需要一个像苹果一样的任务栏，这样会提高的工作效率（也许）。所以就安装了cairo-dock，结果把先前的软件都卸载之后，安装了这个发现，桌面标题栏不见了，白茫茫一篇，后来上网查，发现是：<br /><br />metacity不知道是什么原因，更某个程序发生了冲突，我怀疑是安装3d桌面的时候，一个程序的设置保留下来了。现在我只有每次都在开机后，执行sudo metacity --replace这样一般就能好了。 虽然还是有的窗口刷新不对，比如firefox的scribefire。<br /><br />我想每次都输入这个命令很累，其实有些其他的程序我也想启动，一般可以用系统-启动程序来达成，但是如何让系统开机后就自动执行某个命令呢？<br />1 修改/etc/rc.local 未果<br />2 修改/etc/profile 或者把执行脚本.sh的文件放入到profile.d文件夹中<br /><br />但是据说要授权，如何授权呢？<b>未果。</b><br /><br />其实解决问题的根本还是找到为什么会冲突，搜索“窗口管理器metacity没有打开”结果看到下面这个文章：<br />UBUNTU中的Metacity窗口管理器_问草_百度空间 http://hi.baidu.com/069liuqing/blog/item/4fe900d7fb8c43dba044dfe3.html <br /><br />原来是安装compiz fusion又卸载之后的后遗症，需要把一个参数改一下：<br /><blockquote> Alt + F2，打开“运行应用程序”对话框。输入 gconf-editor，并按回车。<p> 导航到 Apps-&gt;<strong style="color: black; background-color: rgb(255, 255, 102);">metacity</strong>-&gt;general，并选中 compositing_manager，将其值改为false</p></blockquote> 这样就没有冲突了，问题解决。可以正常使用cairo-dock了。<br /><br /><br /><br /><br /><br /><br /><br /><div class="zemanta-pixie"><img class="zemanta-pixie-img" alt="" src="http://img.zemanta.com/pixy.gif?x-id=8c289d3a-4a16-81ee-a22f-884af59fd414" /></div></p>

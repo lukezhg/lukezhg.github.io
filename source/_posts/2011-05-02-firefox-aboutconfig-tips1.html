@@ -1,0 +1,15 @@
+---
+layout: post
+title: firefox的about:config设置技巧（1）
+categories:
+- Firefox
+tags: []
+published: true
+comments: true
+---
+<p>一、如何使得地址栏既能输入网址又能作为搜索引擎<br /><br />1. 在Firefox地址栏输入 about:config<br />2. 在过滤器输入框中输入 keyword.URL<br />3. 双击出现的首选项，将其值修改为<br /><br />百度：http://www.baidu.com/s?ie=UTF-8&amp;wd=<br />谷歌：http://www.google.com/search?ie=UTF-8&amp;oe=UTF-8&amp;sourceid=navclient&amp;gfns=1&amp;q=<br /><br />三、 显示/禁用标签上的关闭按钮<br /><br />有些人喜欢每个标签上有关闭按钮(红色的X),但有些人不喜欢，通过browser.tabs.closeButtons来设定。<br />参数名: browser.tabs.closeButtons<br /><br />缺省值: 1<br />修改方法:<br />&nbsp;&nbsp;&nbsp; * 0 - 仅在活动的标签页上显示关闭按钮<br />&nbsp;&nbsp;&nbsp; * 1- 在所有的标签页上显示关闭按钮<br />&nbsp;&nbsp;&nbsp; * 2- 不显示任何的关闭按钮<br />&nbsp;&nbsp;&nbsp; * 3- 在当前所有标签页的最后显示一个关闭按钮<br /><br />参考：28个最酷的Firefox about:config配置参数 ： http://alt.ctrl.del.blog.163.com/blog/static/259148062008112054845524/<br /><br />
+3. 在后台打开新标签  
+找到首选项:browser.tabs.loadBookmarksInBackground 双击改为ture.  
+找到首选项：browser.tabs.loadDivertedinbackground 双击改为ture.  
+参考[无需插件让你的Firefox支持后台打开新标签](http://www.bitscn.com/school/firefox/201004/185476.html)
+<div class="zemanta-pixie"><img class="zemanta-pixie-img" alt="" src="http://img.zemanta.com/pixy.gif?x-id=06f6e952-73d1-8a52-a601-e218693dbfae" /></div></p>

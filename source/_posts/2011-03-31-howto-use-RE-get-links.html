@@ -1,0 +1,26 @@
+---
+layout: post
+title: 如何把暗文超级链接转换成明文链接呢
+categories: []
+tags: []
+published: true
+comments: true
+---
+<p><b>问题描述：</b>在分享资料的时候，有些编辑器或者邮件不支持暗文超级连接，于是这些超级链接就面临着丢失的危险，如何把原文含有暗文连接的文章，转换成明文连接呢？<br /><br /><b>问题解决：</b><br />问题已经部分得到了解决，也就是可以利用<b><span class="il">正</span><span class="il">则</span><span class="il">表达</span><span class="il">式</span>+regex</b><br /><br /><b><span class="il">正</span><span class="il">则</span><span class="il">表达</span><span class="il">式</span>wiki</b>: <a href="http://zh.wikipedia.org/wiki/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F" target="_blank">http://zh.wikipedia.org/wiki/%<wbr />E6%AD%A3%E5%88%99%E8%A1%A8%E8%<wbr />BE%BE%E5%BC%8F</a><br /><b>regex</b>: <a href="http://regexlib.com/RETester.aspx" target="_blank">http://regexlib.com/RETester.<wbr />aspx</a><br /><br /><b>我使用的<span class="il">表达</span><span class="il">式</span></b>：[a-zA-z]+://[^\s]*<br /><span class="il">表达</span><span class="il">式</span>来自：<a href="http://www.williamlong.info/archives/433.html" target="_blank">http://www.williamlong.<wbr />info/archives/433.html</a><br /><br /><a href="http://xn--6kqp98bmja49j0uyh0b23mqsjmp5b.cn/" target="_blank">由于我找的网站都是.cn</a>结尾的，<a href="http://xn--fhqrlwjv5kjtb9li3pmnzbma9746b.cn/" target="_blank">所以我又在后面加上了.cn</a>&nbsp; <span class="il">表达</span><span class="il">式</span>变为：[a-zA-z]+://[^\s]*.cn<br /><br />一下子网站地址就都出来了 <br /><br /><b>谢谢ZQ的指点！</b><br /><br /><div class="zemanta-pixie"><img class="zemanta-pixie-img" alt="" src="http://img.zemanta.com/pixy.gif?x-id=202bca68-a0a8-862a-b8f0-719ad6ac435e" /></div></p>
+
+如何在新窗口打开链接地址呢？  
+只需要在source\includes\custom\head.html文件后面添加下面的代码,代码外面别忘了加
+<pre><code>
+<script>
+function addBlankTargetForLinks () {
+  $('a[href^="http"]').each(function(){
+      $(this).attr('target', '_blank');
+  });
+}
+
+$(document).bind('DOMNodeInserted', function(event) {
+  addBlankTargetForLinks();
+});
+</script>
+</pre></code>
+参考(李顺利的博文)[http://www.blogjava.net/lishunli/archive/2013/01/20/394478.html]  

@@ -1,0 +1,13 @@
+---
+layout: post
+title: "Science Bowl"
+date: 2014-01-25 13:36
+comments: true
+categories: 
+tags: [Science Bowl,en]
+---
+Today is an amazing day. I volunteered to be a score keeper in the Science Bowl in UGA. It is a competition of science questions for high school students like the game of Jeopardy. There are two types of question: buzz-in question and bonus question. Every player in both team can buzz-in and give the answer, if the answer is correct then they got 4 points and got a bonus question for their team, they can discuss the question together and answer it, if correct they got another 10 points, if wrong no points. I attended a training session for volunteers to be a score keeper. I am kind of exited because I don't know what would it be going like.  
+
+But in the Morning when I got up at 7:00, I began to worried about the bus. Today is Saturday and the UGA bus would not run so early. I promised to be there before 8 am. So I went to the city bus stop to check if the city bus can take me there on time. Unfortunately the first No 5 bus will be at 8:20. What should I do? I realize the incontinence of not having a car. I ran to the next stop where both the UGA bus and the city bus stop, hoping the UGA bus can come. But when it is 7:20, no bus come. I became helpless. A crazy idea came to my mind. Why not run there. So I began to ran with my laptop in my backpack. Usually it will took me 30 minutes to  Aderhold by bus. But I just had 40 minutes. I did not think I could make it. But I really don't want to be late because the score form is still in my driver, to make sure everything goes well with the competition I have to make it. It was also my first time to run alone by myself to Aderhold. At first, I felt cold because of the wind, later my back got so warm that I began to sweat. The road is hilly. When I was climbing uphill, I was nearly out of breadth. The police car passed me several times, very few people on the road this early morning. They might thought this guy was kind of strange, he ran on the road but with a heavy backpack. I did not quiet understand myself either, why I brought my computer with me. It is just a habit. A brave idea hit me several times: Can I ask the police for a ride. It would be wise and abrupt. At about 7:50, I saw Georgia center, I could not believe myself. It just took 30 minutes to get there. I regained my confidence to get there on time. I start ran more quickly. Finally I arrived at Aderhold at 7:58. It is amazing, isn't it?  
+
+I am kind of curious what drive me forward and finally make it at several times that I nearly gave up? No matter what it is, it is powerful. And if you have this power, nothing is impossible.  
