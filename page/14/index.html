@@ -7,8 +7,8 @@
 <meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.2">
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
   <link rel="mask-icon" href="/images/logo.svg" color="#222">
 
 <link rel="stylesheet" href="/css/main.css">
@@ -136,7 +136,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">531</span>
+          <span class="site-state-item-count">532</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -147,7 +147,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">374</span>
+        <span class="site-state-item-count">375</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -164,6 +164,244 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://lukezhg.github.io/2017/12/31/django-cheat-sheet/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Chunlei">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chunlei's Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | Chunlei's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2017/12/31/django-cheat-sheet/" class="post-title-link" itemprop="url">Django cheat sheet</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2017-12-31 09:50:00" itemprop="dateCreated datePublished" datetime="2017-12-31T09:50:00+08:00">2017-12-31</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2020-12-08 09:15:40" itemprop="dateModified" datetime="2020-12-08T09:15:40+08:00">2020-12-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/computer/" itemprop="url" rel="index"><span itemprop="name">computer</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>1、通过创建一个新的 virtualenv 为部署 Django 应用程序设置环境：  </p>
+<pre><code>mkvirtualenv DjangoApp
+</code></pre>
+<p>要退出新的 virtualenv，请使用 deactivate。您可以使用 workon 在环境之间切换。要加载或在 virtualenv 之间切换，请使用 workon 命令：  </p>
+<pre><code>workon DjangoApp
+</code></pre>
+<p>在您的当前环境中安装 Django   </p>
+<pre><code>pip install Django
+</code></pre>
+<p>2、使用 django-admin 命令创建项目  </p>
+<pre><code>django-admin startproject demoproject
+</code></pre>
+<p>3、进入demo project文件夹，使用python manage.py startapp 创建应用.  </p>
+<pre><code>cd demoproject
+python manage.py startapp demoapp
+</code></pre>
+<p>4、测试项目服务器，Ctrl+C退出服务器。  </p>
+<pre><code>python manage.py runserver
+</code></pre>
+<p>或者指定服务器ip和端口。  </p>
+<pre><code>python manage.py runserver 0.0.0.0:8000
+</code></pre>
+<p>5、创建超级用户用于登陆django admin后台管理平台。  </p>
+<pre><code>python manage.py createsuperuser admin
+</code></pre>
+<p>6、编辑设置文件和项目相关文件。<br>settings.py 控制项目参数。    </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">INSTALLED_APPS = [</span><br><span class="line">    &#x27;django.contrib.admin&#x27;,</span><br><span class="line">    &#x27;django.contrib.auth&#x27;,</span><br><span class="line">    &#x27;django.contrib.contenttypes&#x27;,</span><br><span class="line">    &#x27;django.contrib.sessions&#x27;,</span><br><span class="line">    &#x27;django.contrib.messages&#x27;,</span><br><span class="line">    &#x27;django.contrib.staticfiles&#x27;,</span><br><span class="line">    &#x27;clips&#x27;,</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">DATABASES = &#123;</span><br><span class="line">    &#x27;default&#x27;: &#123;</span><br><span class="line">        &#x27;ENGINE&#x27;: &#x27;django.db.backends.mysql&#x27;,#mysql.connector.django</span><br><span class="line">        &#x27;USER&#x27;: &#x27;root&#x27;,</span><br><span class="line">        &#x27;PASSWORD&#x27;: &#x27;123456&#x27;,</span><br><span class="line">        &#x27;NAME&#x27;: &#x27;demoproject&#x27;,</span><br><span class="line">        &#x27;HOST&#x27;: &#x27;127.0.0.1&#x27;,</span><br><span class="line">        &#x27;PORT&#x27;: &#x27;3306&#x27;,</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>urls.py 控制访问请求路径  </p>
+<pre><code>from django.conf.urls import url
+from django.contrib import admin
+from demoproject.views import hello
+urlpatterns = [
+    url(r&#39;^admin/&#39;, admin.site.urls),
+    url(r&#39;^hello/$&#39;, hello),
+]
+</code></pre>
+<p>views.py 控制访问请求的应答  </p>
+<pre><code>from django.http import HttpResponse
+def hello(request):
+    return HttpResponse(&quot;Hello world&quot;)
+</code></pre>
+<p>demoapp&#x2F;models.py 控制数据结构（表格、变量、变量属性） </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">from __future__ import unicode_literals</span><br><span class="line">from django.db import models</span><br><span class="line"></span><br><span class="line">class User(models.Model):</span><br><span class="line">    user_name = models.CharField(max_length=30)</span><br><span class="line">    password = models.CharField(max_length=40)</span><br><span class="line">    email = models.EmailField()</span><br><span class="line">    headshot = models.ImageField(upload_to=&#x27;headshot&#x27;,null=True,blank=True)</span><br><span class="line">    brief = models.CharField(max_length=100)</span><br><span class="line">    join_date = models.DateField()</span><br><span class="line">    user_star = models.CharField(max_length=30)</span><br><span class="line">    def __unicode__(self):</span><br><span class="line">        return self.user_name</span><br><span class="line">......</span><br></pre></td></tr></table></figure>
+<p>demoapp&#x2F;admin.py 控制后台注册和数据呈现  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">from __future__ import unicode_literals</span><br><span class="line">from django.contrib import admin</span><br><span class="line">from .models import User, Clip, Link</span><br><span class="line">import sys;  </span><br><span class="line">reload(sys);  </span><br><span class="line">sys.setdefaultencoding(&quot;utf8&quot;)</span><br><span class="line"></span><br><span class="line">class UserAdmin(admin.ModelAdmin):</span><br><span class="line">    list_display = (&#x27;user_name&#x27;, &#x27;password&#x27;, &#x27;email&#x27;)</span><br><span class="line">    search_fields = (&#x27;user_name&#x27;, &#x27;email&#x27;)</span><br><span class="line">......</span><br><span class="line">admin.site.register(User,UserAdmin)</span><br><span class="line">......</span><br></pre></td></tr></table></figure>
+
+<p>7、当你修改models.py时，需要通过makemigrations将修改反应到数据库中去。  </p>
+<pre><code>python manage.py makemigrations
+python manage.py migrate
+</code></pre>
+<p>8、利用template来呈现页面。  </p>
+<p>首先要修改settings.py  </p>
+<pre><code>TEMPLATES = [
+    {
+        &#39;BACKEND&#39;: &#39;django.template.backends.django.DjangoTemplates&#39;,
+        &#39;DIRS&#39;: [os.path.join(BASE_DIR,&#39;templates&#39;)],
+        &#39;APP_DIRS&#39;: True,
+        &#39;OPTIONS&#39;: {
+            # ...
+</code></pre>
+<p>接下来建文件夹templates  </p>
+<pre><code>\demoproject
+    \demoproject
+    \demoapp
+    \templates
+    manage.py
+</code></pre>
+<p>修改demoproject\views.py  </p>
+<pre><code>from django.shortcuts import render
+import datetime
+def current_datetime(request):
+    now = datetime.datetime.now()
+    return render(request, &#39;current_datetime.html&#39;, {&#39;current_date&#39;: now})
+</code></pre>
+<p>在templates文件夹，新建html模版文件current_datetime.html。  </p>
+<p>\mysite_project\mysite\templates\current_datetime.html</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;% raw %&#125;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">    &lt;body&gt;</span><br><span class="line">        It is now &#123;&#123; current_date &#125;&#125;</span><br><span class="line">    &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line">It is now &#123;&#123; current_date &#125;&#125;.</span><br><span class="line">&#123;% endraw %&#125;</span><br></pre></td></tr></table></figure>
+
+<p>模版的继承，比如我们建一个地层模版，然后在这个模版的基础上加载子模版，这样就可以避免重复。<br>参考：<a target="_blank" rel="noopener" href="https://djangobook.com/templates-in-views/">https://djangobook.com/templates-in-views/</a>  </p>
+<p>base.html  </p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#123;% raw %&#125;</span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">HTML</span> <span class="keyword">PUBLIC</span> <span class="string">&quot;-//W3C//DTD HTML 4.01//EN&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>&#123;% block title %&#125;&#123;% endblock %&#125;<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>My helpful timestamp site<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">    &#123;% block content %&#125;&#123;% endblock %&#125;</span><br><span class="line">    &#123;% block footer %&#125;</span><br><span class="line">    <span class="tag">&lt;<span class="name">hr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>Thanks for visiting my site.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    &#123;% endblock %&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br><span class="line">&#123;% endraw %&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>current_datetime.html  </p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;% raw %&#125;</span><br><span class="line">&#123;% extends &quot;base.html&quot; %&#125;</span><br><span class="line">&#123;% block title %&#125;The current time&#123;% endblock %&#125;</span><br><span class="line">&#123;% block content %&#125;</span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>It is now &#123;&#123; current_date &#125;&#125;.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">&#123;% endblock %&#125;</span><br><span class="line">&#123;% endraw %&#125;</span><br></pre></td></tr></table></figure>
+
+<p>hours_ahead.html  </p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;% raw %&#125;</span><br><span class="line">&#123;% extends &quot;base.html&quot; %&#125;</span><br><span class="line">&#123;% block title %&#125;Future time&#123;% endblock %&#125;</span><br><span class="line">&#123;% block content %&#125;</span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line">    In &#123;&#123; hour_offset &#125;&#125; hour(s), it will be &#123;&#123; next_time &#125;&#125;.</span><br><span class="line"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">&#123;% endblock %&#125;</span><br><span class="line">&#123;% endraw %&#125;</span><br></pre></td></tr></table></figure>
+
+<p>9、利用form来获取用户数据。  </p>
+<p>mysite_project\mysite\books\templates\books\search_form.html</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&#123;% raw %&#125;</span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Search<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">&quot;/search/&quot;</span> <span class="attr">method</span>=<span class="string">&quot;get&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;q&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> <span class="attr">value</span>=<span class="string">&quot;Search&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br><span class="line">&#123;% endraw %&#125;</span><br></pre></td></tr></table></figure>
+
+<p>mysite\books\urls.py</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.conf.urls <span class="keyword">import</span> url</span><br><span class="line"><span class="keyword">from</span> books <span class="keyword">import</span> views</span><br><span class="line">urlpatterns = [</span><br><span class="line">    url(<span class="string">r&#x27;^search-form/$&#x27;</span>, views.search_form),</span><br><span class="line">    url(<span class="string">r&#x27;^search/$&#x27;</span>, views.search),</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<p>mysite\urls.py</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.conf.urls <span class="keyword">import</span> include, url</span><br><span class="line">urlpatterns = [</span><br><span class="line"><span class="comment"># ...</span></span><br><span class="line">    url(<span class="string">r&#x27;^&#x27;</span>, include(<span class="string">&#x27;books.urls&#x27;</span>)),</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p>books\views.py</p>
+<pre><code>from django.shortcuts import render
+def search_form(request):
+    return render(request, &#39;books/search_form.html&#39;)
+def search(request):
+    if &#39;q&#39; in request.GET:
+        message = &#39;You searched for: %r&#39; % request.GET[&#39;q&#39;]
+    else:
+        message = &#39;You submitted an empty form.&#39;
+    return HttpResponse(message)
+</code></pre>
+<p>参考：<a target="_blank" rel="noopener" href="https://djangobook.com/django-forms/">https://djangobook.com/django-forms/</a>  </p>
+<p>定义表单类，更简洁的获取用户数据的方法。  </p>
+<p>mysite_project\mysite\mysite\forms.py</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django <span class="keyword">import</span> forms</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ContactForm</span>(forms.Form):</span><br><span class="line">    subject = forms.CharField()</span><br><span class="line">    email = forms.EmailField(required=<span class="literal">False</span>)</span><br><span class="line">    message = forms.CharField()</span><br></pre></td></tr></table></figure>
+
+<p>mysite_project\mysite\mysite\views.py</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.http <span class="keyword">import</span> Http404, HttpResponse, HttpResponseRedirect</span><br><span class="line"><span class="keyword">from</span> django.shortcuts <span class="keyword">import</span> render</span><br><span class="line"><span class="keyword">import</span> datetime</span><br><span class="line"><span class="keyword">from</span> mysite.forms <span class="keyword">import</span> ContactForm    </span><br><span class="line"><span class="keyword">from</span> django.core.mail <span class="keyword">import</span> send_mail, get_connection</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">contact</span>(<span class="params">request</span>):</span><br><span class="line">    <span class="keyword">if</span> request.method == <span class="string">&#x27;POST&#x27;</span>:</span><br><span class="line">        form = ContactForm(request.POST)</span><br><span class="line">        <span class="keyword">if</span> form.is_valid():</span><br><span class="line">            cd = form.cleaned_data</span><br><span class="line">            con = get_connection(<span class="string">&#x27;django.core.mail.backends.console.EmailBackend&#x27;</span>)</span><br><span class="line">            send_mail(</span><br><span class="line">                cd[<span class="string">&#x27;subject&#x27;</span>],</span><br><span class="line">                cd[<span class="string">&#x27;message&#x27;</span>],</span><br><span class="line">                cd.get(<span class="string">&#x27;email&#x27;</span>, <span class="string">&#x27;noreply@example.com&#x27;</span>),</span><br><span class="line">                [<span class="string">&#x27;siteowner@example.com&#x27;</span>],</span><br><span class="line">                connection=con</span><br><span class="line">            )</span><br><span class="line">            <span class="keyword">return</span> HttpResponseRedirect(<span class="string">&#x27;/contact/thanks/&#x27;</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        form = ContactForm()</span><br><span class="line">    <span class="keyword">return</span> render(request, <span class="string">&#x27;contact_form.html&#x27;</span>, &#123;<span class="string">&#x27;form&#x27;</span>: form&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>mysite_project\mysite\templates\contact_form.html</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">&#123;% raw %&#125;</span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Contact us<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">        <span class="selector-tag">ul</span><span class="selector-class">.errorlist</span> &#123;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">margin</span>: <span class="number">0</span>;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">padding</span>: <span class="number">0</span>;</span></span><br><span class="line"><span class="language-css">        &#125;</span></span><br><span class="line"><span class="language-css">        <span class="selector-class">.errorlist</span> <span class="selector-tag">li</span> &#123;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">background-color</span>: red;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">color</span>: white;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">display</span>: block;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">font-size</span>: <span class="number">1.2em</span>;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">margin</span>: <span class="number">0</span> <span class="number">0</span> <span class="number">3px</span>;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">padding</span>: <span class="number">4px</span> <span class="number">5px</span>;</span></span><br><span class="line"><span class="language-css">        &#125;</span></span><br><span class="line"><span class="language-css">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Contact us<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">    &#123;% if form.errors %&#125;</span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span> <span class="attr">style</span>=<span class="string">&quot;color: red;&quot;</span>&gt;</span></span><br><span class="line">            Please correct the error&#123;&#123; form.errors|pluralize &#125;&#125; below.</span><br><span class="line">        <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    &#123;% endif %&#125;</span><br><span class="line">    <span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">&quot;&quot;</span> <span class="attr">method</span>=<span class="string">&quot;post&quot;</span> <span class="attr">novalidate</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">table</span>&gt;</span></span><br><span class="line">            &#123;&#123; form.as_table &#125;&#125;</span><br><span class="line">        <span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br><span class="line">        &#123;% csrf_token %&#125;</span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> <span class="attr">value</span>=<span class="string">&quot;Submit&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br><span class="line">&#123;% endraw %&#125;</span><br></pre></td></tr></table></figure>
+
+<p>10、urls进阶  </p>
+<p>\urls.py</p>
+<pre><code>from django.conf.urls import include, url
+from . import views
+urlpatterns = [
+    url(r&#39;^hello/$&#39;, views.hello),
+    url(r&#39;^time/$&#39;, views.current_datetime),
+          url(r&#39;^time/plus/(d{1,2})/$&#39;, views.hours_ahead),
+]
+</code></pre>
+<p>\urls.py</p>
+<pre><code>from django.conf import settings
+from django.conf.urls import url
+from . import views
+urlpatterns = [
+    url(r&#39;^$&#39;, views.homepage),
+    url(r&#39;^(\d{4})/([a-z]{3})/$&#39;, views.archive_month),
+]
+if settings.DEBUG:
+    urlpatterns += [url(r&#39;^debuginfo/$&#39;, views.debug),]
+</code></pre>
+<p>\urls.py</p>
+<pre><code>from django.conf.urls import url
+from . import views
+urlpatterns = [
+    url(r&#39;^reviews/2003/$&#39;, views.special_case_2003),
+    url(r&#39;^reviews/([0-9]{4})/$&#39;, views.year_archive),
+    url(r&#39;^reviews/([0-9]{4})/([0-9]{2})/$&#39;, views.month_archive),
+    url(r&#39;^reviews/([0-9]{4})/([0-9]{2})/([0-9]+)/$&#39;, views.review_detail),
+]
+</code></pre>
+<p>更多参考： <a target="_blank" rel="noopener" href="https://djangobook.com/advanced-views-urlconfs/">https://djangobook.com/advanced-views-urlconfs/</a></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1161,113 +1399,6 @@ C -->|Three| F[Car]
 <p>我：AI不是artificial intelligence吗？爱，等我一下，爱，你没穿鞋！</p>
 <p>科学大本营——第一季</p>
 <p>STEM&amp;爱：主演：大我，小爱。 编剧：chunlei</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://lukezhg.github.io/2017/10/21/build-a-chat-bot-with-chatterbot-django/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Chunlei">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Chunlei's Blog">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content=" | Chunlei's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2017/10/21/build-a-chat-bot-with-chatterbot-django/" class="post-title-link" itemprop="url">build a chat bot with ChatterBot Django</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2017-10-21 22:27:00" itemprop="dateCreated datePublished" datetime="2017-10-21T22:27:00+08:00">2017-10-21</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2020-12-08 09:15:40" itemprop="dateModified" datetime="2020-12-08T09:15:40+08:00">2020-12-08</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>ChatterBot Django是基于Python和Django框架构建的一个聊天程序。  </p>
-<p>其使用的基本方法可以查看<a target="_blank" rel="noopener" href="http://chatterbot.readthedocs.io/en/stable/examples.html">这个文档</a>。</p>
-<p>根据已有的对话进行训练（其中对话数据储存在chatterbot_corpus文件夹中）<br>    python manage.py train</p>
-<p>打开服务器(访问[<a href="http://127.0.0.1:8000]浏览">http://127.0.0.1:8000]浏览</a>)<br>    python manage.py runserver</p>
-<code>
-目录：/webdev/chatterbot  
-alice: http://127.0.0.1:8000/chat/  
-ctrl + C 退出程序  
-url.py 可以修改响应  
-</code>
-
-<p>如果修改数据库文件的话，比如删除db.sqlite3文件，就需要运行下面的命令来从新配置框架。<br>    python manage.py migrate</p>
-<p>修改settings.py文件。<br><code></p>
-<pre><code># ChatterBot settings
-CHATTERBOT = {
-&#39;name&#39;: &#39;Django ChatterBot Example&#39;,
-&#39;trainer&#39;: &#39;chatterbot.trainers.ChatterBotCorpusTrainer&#39;,
-&#39;training_data&#39;: [
-     &#39;chatterbot.corpus.english.greetings&#39;,#set the traing data
-     &#39;chatterbot.corpus.custom.myown&#39;,
-     &#39;chatterbot.corpus.swedish.food&#39;,
-],
-&#39;django_app_name&#39;: &#39;django_chatterbot&#39;
-}
-</code></pre>
-<p></code>&gt;</p>
-<p>修改chatterbot_corpus文件夹中训练数据。<br>训练数据格式如下<br><code><br>    categories:<br>    - greetings<br>    conversations:<br>    - - Hello<br>      - Hi<br>    - - Hi<br>      - Hello<br>    - - Greetings!<br>      - Hello<br>    - - Hello<br>      - Greetings!<br>    - - Hi, How is it going?<br>      - Good<br>    - - Hi, How is it going?<br>      - Fine<br>    - - Hi, How is it going?<br>      - Okay<br></code></p>
-<p>###接下来可以做的  </p>
-<p>可以尝试利用英语8000句来训练。  </p>
-<p>如何为其添加三元组知识图谱？    </p>
-<p>可以用她来做什么？练英语；学编程；或者其他。</p>
-<p>如何把它迁移到平台上？</p>
 
       
     </div>

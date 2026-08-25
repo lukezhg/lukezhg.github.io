@@ -7,8 +7,8 @@
 <meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.2">
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
   <link rel="mask-icon" href="/images/logo.svg" color="#222">
 
 <link rel="stylesheet" href="/css/main.css">
@@ -136,7 +136,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">531</span>
+          <span class="site-state-item-count">532</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -147,7 +147,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">374</span>
+        <span class="site-state-item-count">375</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -164,6 +164,323 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://lukezhg.github.io/2014/11/27/flash-as3-zip-manual/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Chunlei">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chunlei's Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | Chunlei's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2014/11/27/flash-as3-zip-manual/" class="post-title-link" itemprop="url">Flash AS3 zip Manual</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2014-11-27 14:48:00" itemprop="dateCreated datePublished" datetime="2014-11-27T14:48:00+08:00">2014-11-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2020-12-08 09:15:40" itemprop="dateModified" datetime="2020-12-08T09:15:40+08:00">2020-12-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/flash/" itemprop="url" rel="index"><span itemprop="name">flash</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>Action Script 3.0 简明手册<br>在上机前确保你的flash是cs3或者以上版本，如果是flash8或者以前的版本，下面有些代码会报错。<br>变量与常量<br>变量有不同的类型，一个变量由变量名和值构成。<br><code/><br>var value2:Number &#x3D; 17;<br>const SALES_TAX_RATE:Number &#x3D; 0.07;<br></code><br>属性<br>简单地视为包含在对象中的“子”变量。  </p>
+<code/>
+square.x = 100;  
+square.y = 150;  
+square.rotation = triangle.rotation;  
+square.scaleX = 1.5;  
+square.scaleY = 1.5;  
+square.currentFrame  
+square.alpha = 30;  
+square.height =20;  
+square.width =40;  
+square.visible =false;  
+</code>
+  
+<p>调用方法：变量名-点-属性名<br>方法<br>方法是指可以由对象执行的操作。  </p>
+<pre><code>shortFilm.play();  
+shortFilm.stop();  
+shortFilm.gotoAndStop(1);  
+</code></pre>
+<p>某些方法可以执行计算并返回可以像变量一样使用的结果。  </p>
+<pre><code>var numericData:Number = 9;  
+var textData:String = numericData.toString();  
+calculatorDisplay.text = numericData.toString();  
+</code></pre>
+<p>事件<br>本质上，事件就是所发生的、ActionScript 能够识别并可响应的事情。<br>在编写执行事件处理时三个重要元素：  </p>
+<pre><code>事件源：事件实际发生的位置。  
+事件：发生的事情。  
+响应：事件发生时的执行动作。  
+
+this.stop();  
+function playMovie(event:MouseEvent):void{  
+this.play();}  
+
+playButton.addEventListener(MouseEvent.CLICK, playMovie);  
+</code></pre>
+<p>算数运算符<br>+-*&#x2F;^  </p>
+<h1 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符  "></a>逻辑运算符  </h1><p>&amp;&amp;<br>||  </p>
+<p>if (dayOfWeek &#x3D;&#x3D; “Wednesday”){<br>takeOutTrash();}  </p>
+<p>&#x2F;&#x2F;单行注释<br>&#x2F;*多行<br>注释<br>*&#x2F;  </p>
+<p>流控制<br>函数<br>调用函数调用函数  </p>
+<pre><code>trace(&quot;Use trace to help debug your script&quot;);  
+var randomNum:Number = Math.random();  
+
+var someDate:Date = new Date();  
+var dayNum:uint = someDate.getDay();  
+</code></pre>
+<p>定义函数  </p>
+<pre><code>function traceParameter(aParam:String){  
+    trace(aParam);}  
+
+traceParameter(&quot;hello&quot;); // hello  
+</code></pre>
+<p>从函数返回值  </p>
+<pre><code>function doubleNum(baseNum:int):int{  
+    return (baseNum * 2);}  
+</code></pre>
+<code/>
+function passPrimitives(xParam:int, yParam:int):void{  
+    xParam++;  
+    yParam++;  
+    trace(xParam, yParam);  
+}  
+</code>  
+函数参数  
+  
+<pre><code>var xValue:int = 10;  
+var yValue:int = 15;  
+trace(xValue, yValue);// 10 15  
+passPrimitives(xValue, yValue); // 11 16  
+trace(xValue, yValue);// 10 15  
+</code></pre>
+<p>循环  </p>
+<p>for循环  </p>
+<pre><code>var i:int;  
+for (i = 0; i &lt; 5; i++){  
+trace(i);}  
+
+for..in  
+
+var myObj:Object = {x:20, y:30};  
+for (var i:String in myObj){  
+trace(i + &quot;: &quot; + myObj[i]);  
+}  
+//output:  
+//x: 20  
+// y: 30  
+</code></pre>
+<p>条件语句  </p>
+<pre><code>if (x &gt; 0){  
+trace(&quot;x is positive&quot;);}  
+else if (x &lt; 0){  
+trace(&quot;x is negative&quot;);}  
+else{  
+trace(&quot;x is 0&quot;);}  
+</code></pre>
+<p>switch语句  </p>
+<code/>
+switch(dayNum){  
+case 0:trace("Sunday");  
+break;  
+case 1:trace("Monday");  
+break;  
+case 2:trace("Tuesday");  
+break;  
+case 3:trace("Wednesday");  
+break;  
+case 4:trace("Thursday");  
+break;  
+case 5:trace("Friday");  
+break;  
+case 6:trace("Saturday");  
+break;  
+default:trace("Out of range");  
+break;  
+}  
+</code>  
+
+<p>类<br>点语法  </p>
+<p>点运算符 (.) 提供对对象的属性和方法的访问。使用点语法，可以使用后跟点运算符和属性名或方法名的实例名来引用类的属性或方法。以下面的类定义为例：  </p>
+<code/>
+class DotExample  
+{  
+public var prop1:String;  
+public function method1():void {}  
+}  
+</code>  
+借助于点语法，可以使用在如下代码中创建的实例名来访问 prop1 属性和 method1() 方法：  
+<code/>  
+var myDotEx:DotExample = new DotExample();  
+myDotEx.prop1 = "hello";  
+myDotEx.method1();  
+</code>  
+定义包时，可以使用点语法。可以使用点运算符来引用嵌套包。例如，EventDispatcher 类位于一个名为 events 的包中，该包嵌套在名为 flash 的包中。可以使用下面的表达式来引用 events 包：  
+  
+<p>flash.events  </p>
+<p>还可以使用此表达式来引用 EventDispatcher 类：  </p>
+<p>flash.events.EventDispatcher  </p>
+<p>数组  </p>
+<code/>
+var names:Array = new Array("John", "Jane", "David");  
+trace(names.length); //output: 3  
+trace(names[0]);// output: John  
+trace(names[1]); //output: Jane  
+trace(names[2]);// output: David  
+</code>  
+  
+  
+<p>实例教程<br>对象的初始化<br>1 在主场景中新建一个矩形，全选然后F8转换为元件，命名为box。在第一帧里面尝试加入：<br>代码1  </p>
+<code/>
+box.x = 10;  
+box.y = 150;  
+</code>  
+代码2  
+<code/>  
+box.rotation = triangle.rotation;  
+box.scaleX = 1.5;  
+box.scaleY = 1.5;  
+</code>  
+2 把box变成一个骰子，尝试  
+代码3  
+<code/>  
+box.currentFrame  
+box.alpha = 30;  
+box.height =20;  
+box.width =40;  
+box.visible =false;  
+</code>  
+3 尝试使用随机函数  
+代码4  
+<code/>  
+box.x = this.stage.width*Math.random();  
+box.y = this.stage.height*Math.random();  
+</code>  
+  
+<p>影片剪辑的控制  </p>
+<code/>
+box.stop();  
+box.play();  
+box.gotoAndStop(1);  
+box.gotoAndPlay(3);  
+box.gotoAndStop(Math.round(6*Math.random()));  
+</code>  
+
+<p>影片剪辑的控制  </p>
+<pre><code/>
+import flash.display.*;
+import flash.events.*;
+mcFace.addEventListener(MouseEvent.MOUSE_DOWN,startDragFace);//添加监听
+
+//startDragFace函数
+function startDragFace(e:MouseEvent):void {
+mcFace.startDrag();
+}
+
+mcFace.addEventListener(MouseEvent.MOUSE_UP,stopDragFace);
+
+function stopDragFace(e:MouseEvent):void {
+mcFace.stopDrag();
+
+}
+</code></pre> 
+
+<p>播放和定制按钮<br>1、制作按钮<br>2、给按钮命名为btn<br>3、在第一帧添加代码（该实例来自：AS3基础教程实例1 给按钮添加动作 | 且行电子学档: <a target="_blank" rel="noopener" href="http://www.eportfolios.cn/node/2146%EF%BC%89">http://www.eportfolios.cn/node/2146）</a>  </p>
+<pre><code>btn.addEventListener(MouseEvent.CLICK,btnClick);//给btn注册事件帧听器  
+btn.addEventListener(MouseEvent.ROLL_OVER,btnRollOver);//注册鼠标放上事件帧听器  
+btn.addEventListener(MouseEvent.ROLL_OUT,btnRollOut);//注册鼠标离开事件帧听器  
+</code></pre>
+<p>&#x2F;&#x2F;点击事件处理函数<br>    function btnClick(e:MouseEvent):void{<br>    trace(e.currentTarget.name);&#x2F;&#x2F;trace就是在输出面板里输出内容，这里输出”btn”，只有在flash测试的时候才有效<br>    }  </p>
+<p>&#x2F;&#x2F;鼠标放在btn上的事件处理函数<br>    function btnRollOver(e:MouseEvent):void{<br>    txt.text&#x3D;”鼠标放在了按钮上”;&#x2F;&#x2F;给文本框txt的text属性赋值为”鼠标放在了按钮上”<br>    }  </p>
+<p>&#x2F;&#x2F;鼠标从btn上离开的事件处理函数<br>    function btnRollOut(e:MouseEvent):void{<br>    txt.text&#x3D;”鼠标从按钮上离开了”;<br>    }  </p>
+<p>4、添加一个动态文本框，命名为txt<br>ctrl+enter测试影片<br>修改代码如下：  </p>
+<pre><code>btn.addEventListener(MouseEvent.CLICK,btnClick);//给btn注册事件帧听器  
+</code></pre>
+<p>&#x2F;&#x2F;点击事件处理函数<br>    function btnClick(e:MouseEvent):void{<br>    box.gotoAndStop(Math.round(6*Math.random()));<br>    }  </p>
+<p>测试影片，如果成功则再建一个按钮元件，命名为btnPlay,修改代码为：  </p>
+<pre><code>btn.addEventListener(MouseEvent.CLICK,btnClick);//给btn注册事件帧听器  
+</code></pre>
+<p>&#x2F;&#x2F;点击事件处理函数<br>    function btnClick(e:MouseEvent):void{<br>    box.stop();<br>    }<br>    btnPlay.addEventListener(MouseEvent.CLICK,btnPlayClick);&#x2F;&#x2F;给btnPlay注册事件帧听器  </p>
+<p>&#x2F;&#x2F;点击事件处理函数<br>    function btnPlayClick(e:MouseEvent):void{<br>    box.play();<br>    }  </p>
+<p>如何使用文本框（Text）  </p>
+<p>使用前可以导入以下声明<br>	import flash.text.TextField;<br>	import flash.text.TextFormat;<br>	import flash.text.TextFormatAlign;</p>
+<p>Number()将字符型转化为数值型变量<br>toString()将数值转化为字符  </p>
+<p>5、尝试仿照实例让代码与fla源文件分离：<br>实例：（AS3基础教程实例1 给按钮添加动作 | 且行电子学档: <a target="_blank" rel="noopener" href="http://www.eportfolios.cn/node/2146%EF%BC%89">http://www.eportfolios.cn/node/2146）</a>  </p>
+<p>本文参考了:<br>adobe AS3帮助手册：<a target="_blank" rel="noopener" href="http://tinyurl.com/7ujc2yp">http://tinyurl.com/7ujc2yp</a>  </p>
+<p>Flash实例<br>简单实例  </p>
+<pre><code>Flash教程：送给初学者的一点使用技巧_Flash实例教程_IT部落: http://edu.itbulo.com/200711/120855.htm  
+立体板-Flash源文件-闪吧Flash8: http://www.flash8.net/fla/10364.shtml  
+放大镜-Flash源文件 - 闪吧Flash8: http://www.flash8.net/fla/10144.shtml  
+卷轴和毛笔写字- Flash源文件 - 闪吧Flash8: http://www.flash8.net/fla/10342.shtml  
+地球旋转-上传：明月老师 Flash源文件 - 闪吧Flash8: http://www.flash8.net/fla/10237.shtml  
+瀑布-上传：CC851246330 Flash源文件 - 闪吧Flash8: http://www.flash8.net/fla/9515.shtml  
+</code></pre>
+<p>复杂实例<br>ActionScript 3.0的流程控制语法_知行网: <a target="_blank" rel="noopener" href="http://www.zhixing123.cn/Flash/2111.html">http://www.zhixing123.cn/Flash/2111.html</a><br>flash actionScript3 处理xml 教程_知行网: <a target="_blank" rel="noopener" href="http://www.zhixing123.cn/Flash/20080.html">http://www.zhixing123.cn/Flash/20080.html</a>    </p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1032,117 +1349,6 @@ pluginspage="http://www.macromedia.com/go/getflashplayer"><br></embed><br></obje
 <li><p>传统的学校教育为学生生活做准备<br>然而，听教师讲课和为考试而学习与现实工作和生活一点关系也没有。在现实生活工作中，人们进行的是创造、管理、评判、交流和合作。</p>
 </li>
 </ol>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://lukezhg.github.io/2014/09/22/cognitive-apprenticeship/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Chunlei">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Chunlei's Blog">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content=" | Chunlei's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2014/09/22/cognitive-apprenticeship/" class="post-title-link" itemprop="url">Cognitive Apprenticeship</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2014-09-22 13:11:00" itemprop="dateCreated datePublished" datetime="2014-09-22T13:11:00+08:00">2014-09-22</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2020-12-08 09:15:40" itemprop="dateModified" datetime="2020-12-08T09:15:40+08:00">2020-12-08</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%95%99%E5%AD%A6/" itemprop="url" rel="index"><span itemprop="name">教学</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>Sawyer, R. (2006). The Cambridge handbook of the learning sciences. (R. K. Sawyer, Ed.). Cambridge: Cambridge University Press. doi:10.1017&#x2F;CBO9780511816833</p>
-<p><img src="https://raw.github.com/lukezhg/Freyja/master/Mscare.png" alt="Cognitive Apprenticeship"></p>
-<p>Method(Mscare):<br>Ways to promote the development of expertise  </p>
-<ul>
-<li>Modeling: teacher performs a task so students can observe  </li>
-<li>Scaffolding: teacher provides supports to help the student perform a task  </li>
-<li>Coaching: teacher observes and facilitates while students perform a task  </li>
-<li>Articulation: teacher encourages students to verbalize their knowledge and thinking  </li>
-<li>Reflection: teacher enables students to compare their performance with others  </li>
-<li>Exploration: teacher invites students to pose and solve their own problems</li>
-</ul>
-<p>认知性学徒机制在网络社区甚至大学的学习实践中非常值得关注。在学习活动设计时，也应该遵循和利用上图所提到的步骤和原则。  </p>
-<p>比如这个表格所提到的内容、方法、次序和社区，在学习活动设计的时候就可以好好加以参照。  </p>
-<p>例如对于教学设计的学习：<br>一、内容<br>专业知识：前端分析（学习内容、学习者、学习需要）、教学目标设定和表述、设计教学思路和过程落实重难点、学习成果的评价设计、在具体教学情境下实施并优化。<br>一般性学习策略： 阅读材料、观察教学录像、见习、与专家教师交流、与同学相互交流、尝试设计和实施教学活动、自我反思。<br>控制策略：制定学习目标和学习计划、记录学习进度、提前准备、主动参与、主动寻求帮助、反思和总结、树立更有挑战的学习目标、掌控时间。<br>学习方法：通过反复强化练习口语以心理素质、通过优秀设计和教学视频找到自己的短板并模仿和创新、通过与专家教师的交流了解教学设计背后的思考和专家教师的思考和工作模式、通过微格训练锻炼基本的教学技能、通过阅读文献了解学生前科学概念研究成果、通过网络搜索查找教学素材和科学史内容。  </p>
-<p>二、方法<br>教师演示或者观看专家教师课堂录像<br>作为助教与一线教师共同授课或者分析课后作业<br>教师对师范生的学习活动组织的具体环节和过程进行校正和点评<br>指导老师帮助师范生理清自己的教学思路、活动和活动意图<br>鼓励师范生与其他师范生或者指导老师的教学做比较（目标、课堂气氛、教学技巧、学习效果等）<br>指导教师鼓励师范生思考和解决自己教学中遇到的问题  </p>
-<p>三、次序<br>教学设计任务应该：<br>由简单到复杂（观看视频、分析教学线索和设计意图、了解学生、分析内容、设计和表述教学目标、设计思路、收集素材、设计过程、学习效果评价的设计、评课、设计完整的一堂课、说课）<br>由一般情境到多种情境（初中、高中；农村、城市；普通、重点；传统、创新）<br>由总体概括到具体任务  </p>
-<p>四、社区<br>实际到中学去，看一看、相一想、试一试<br>建立网络分享、互助、活动学习社区<br>建立与一线教师和专家教师的专业对话<br>建立见习、实习的基地和教学训练的小组活动常规<br>激励内部动机，向着专家教师努力<br>学会集体合作、树立并完成更有挑战性的目标  </p>
-<p>对于此书感兴趣的人，其目录如下：<br>Contents  </p>
-<ol>
-<li>Introduction: The New Science of Learning 1<br>R. Keith Sawyer</li>
-</ol>
-<p>part i<br>FOUNDATIONS<br>2 . Foundations and Opportunities for an Interdisciplinary Science of Learning 19<br>John D. Bransford, Brigid Barron, Roy D. Pea, Andrew Meltzoff, Patricia Kuhl, Philip Bell, Reed Stevens, Daniel L. Schwartz, Nancy Vye, Byron Reeves, Jeremy Roschelle, and Nora H. Sabelli<br>3. Constructionism 35<br>Yasmin B. Kafai<br>4. Cognitive Apprenticeship 47<br>Allan Collins<br>5. Cognitive Tutors: Technology Bringing Learning Sciences<br>to the Classroom 61<br>Kenneth R. Koedinger and Albert Corbett<br>6. Learning in Activity 79<br>James G. Greeno<br>7. Knowledge Building: Theory, Pedagogy, and Technology 97<br>Marlene Scardamalia and Carl Bereiter  </p>
-<p>part ii<br>METHODOLOGIES<br>8. Learner-Centered Design: Reflections on the Past and Directions for the Future 119<br>Chris Quintana, Namsoo Shin, Cathleen Norris, and Elliot Soloway<br>9. The Evolution of Design Studies as Methodology 135<br>Jere Confrey<br>10. Design-Based Research: A Methodological Toolkit for the Learning Scientist 153<br>Sasha Barab<br>11. Guiding Inquiry-Based Math Learning 171<br>Paul Cobb and Kay McClain<br>12 . Analyzing Collaborative Discourse 187<br>R. Keith Sawyer<br>13. Assessing for Deep Understanding 205<br>Sharon M. Carver  </p>
-<p>part iii<br>THE NATURE OF KNOWLEDGE<br>14. Case-Based Reasoning 225<br>Janet L. Kolodner<br>15. The Knowledge Integration Perspective on Learning and Instruction 243<br>Marcia C. Linn<br>16. A History of Conceptual Change Research: Threads and Fault Lines 265<br>Andrea A. diSessa<br>17. Spatial Representations and Imagery in Learning 283<br>Daniel L. Schwartz and Julie Heiser<br>18. Literacy and the Learning Sciences 299<br>Annemarie Sullivan Palincsar and Barbara G. Ladewski  </p>
-<p>part iv<br>MAKING KNOWLEDGE VISIBLE<br>19. Project-Based Learning 317<br>Joseph S. Krajcik and Phyllis C. Blumenfeld<br>20. Making Authentic Practices Accessible to Learners: Design Challenges and Strategies 335<br>Daniel C. Edelson and Brian J. Reiser<br>21. BioKIDS: An Animated Conversation on the Development of Curricular Activity Structures for Inquiry Science 355<br>Nancy Butler Songer<br>22. Cultivating Model-Based Reasoning in Science Education 371<br>Richard Lehrer and Leona Schauble<br>23. Exploring Mathematics Through Construction and Collaboration 389<br>Richard Noss and Celia Hoyles  </p>
-<p>part v<br>LEARNING TOGETHER<br>24. Computer-Supported Collaborative Learning 409<br>Gerry Stahl, Timothy Koschmann, and Daniel D. Suthers<br>25. WILD for Learning: Interacting Through New Computing Devices Anytime, Anywhere 427<br>Roy D. Pea and Heidy Maldonado<br>26. Arguing to Learn 443<br>Jerry Andriessen<br>27. Learning in Online Communities 461<br>Amy Bruckman<br>part vi<br>LEARNING ENVIRONMENTS<br>28. Motivation and Cognitive Engagement in Learning Environments 475<br>Phyllis C. Blumenfeld, Toni M. Kempler, and Joseph S. Krajcik<br>29. Learning as a Cultural Process: Achieving Equity Through Diversity 489<br>Na’ilah Suad Nasir, Ann S. Rosebery, Beth Warren, and Carol D. Lee<br>30. Prospects for Transforming Schools with Technology- Supported Assessment 505<br>Barbara Means<br>31. Internet Use in Schools: Promise and Problems 521<br>Janet Ward Schofield<br>32. Teacher Learning Research and the Learning Sciences 535<br>Barry J. Fishman and Elizabeth A. Davis<br>33. Scaling Up: Evolving Innovations Beyond Ideal Settings to Challenging Contexts of Practice 551<br>Chris Dede<br>34. Conclusion: The Schools of the Future 567<br>R. Keith Sawyer  </p>
-<p>Afterword: After How Comes What 581<br>Seymour Papert<br>Epilogue: The Fundamental Issue in the Learning Sciences 587<br>Roger C. Schank<br>Author Index 593<br>Subject Index  </p>
 
       
     </div>
